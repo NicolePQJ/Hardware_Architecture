@@ -120,6 +120,3 @@ if __name__ == "__main__":
     OUT_DIR = options.output_dir
     
     main(options.stats_prefix)
-
-
-
