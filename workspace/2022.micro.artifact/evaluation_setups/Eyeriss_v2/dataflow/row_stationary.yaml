@@ -5,7 +5,7 @@ architecture_constraints:
     type: bypass
     bypass: [Inputs, Weights]
     keep: [Outputs]
-  - target: weights_spad
+  - target: weight_spad
     type: bypass
     bypass: [Inputs, Outputs]
     keep: [Weights]
@@ -26,18 +26,18 @@ architecture_constraints:
   #   permutation: NPQR SCM
   #   factors: P=1 Q=1 R=1 S=0 N=1
   # # only allow fanout of M, Q out from glb
-  - target: glb_cluster
-    type: spatial
-    split: 3
-    permutation: NCPRSQM
-    factors: C=1 P=1 R=1 S=1 N=1
+#   - target: glb_cluster
+#     type: spatial
+#     split: 3
+#     permutation: NCPRSQM
+#     factors: C=1 P=1 R=1 S=1 N=1
   # one ofmap position but of different output channels
   - target: psum_spad
     type: temporal
     permutation: NCPQRS M
     factors: C=1 R=1 S=1 P=1 Q=1 #N=1
   # row stationary -> 1 row at a time
-  - target: weights_spad
+  - target: weight_spad
     type: temporal
     permutation: NMPQS CR
     factors: M=1 P=1 Q=1 S=1 R=0 #N=1
@@ -64,10 +64,10 @@ mapspace_constraints:
     #   permutation: NMCPQRS
     # intuitive optimization for row stationary
     # -> process a row/col of the output before going to the next one
-    - target: glb
-      type: temporal
-      permutation: QRSC PNM
-      factors: Q=1 R=1 S=1 P=0
+#     - target: glb
+#       type: temporal
+#       permutation: QRSC PNM
+#       factors: Q=1 R=1 S=1 P=0
     # intuitive optimization to reduce map space size
     - target: DRAM
       type: temporal

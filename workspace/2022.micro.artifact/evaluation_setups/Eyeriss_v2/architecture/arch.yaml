@@ -5,6 +5,14 @@ architecture:
       attributes:
         technology: 45nm
       local:
+#         - name: BackingStorage
+#           class: DRAM  # a storage with inifinite capacity, so DRAM in timeloop repr
+#           subclass: DummyStorage
+#           attributes:
+#             width: 64
+#             block_size: 8
+#             datawidth: 8
+#             metadata_storage_width: 8
         - name: DRAM
           class: DRAM
           subclass: DRAM_metadata
@@ -39,9 +47,9 @@ architecture:
 
       subtree:
         - name: PE_cluster[0..15]
-          local:
-            subtree:
-              -name: PE[0..11]
+          local: []
+          subtree:
+            - name: PE[0..11]
               local:
                 - name: iact_spad
                   class: storage
