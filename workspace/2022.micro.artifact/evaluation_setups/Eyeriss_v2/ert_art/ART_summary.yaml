@@ -1,45 +1,45 @@
 ART_summary:
   version: 0.3
   table_summary:
-  - name: eyeriss_168.DummyBuffer[0..13]
-    area: 0
-    primitive_estimations: Aladdin_table
-  - name: eyeriss_168.PE[0..167].ifmap_spad
-    area: 180.0
+  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].psum_spad
+    area: 1020.59
+    primitive_estimations: Cacti
+  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].iact_spad
+    area: 485.1975
     primitive_estimations:
     - name: storage
-      estimator: dummy_table
-    - name: address_generators[0..1]
       estimator: Aladdin_table
-  - name: eyeriss_168.PE[0..167].weights_spad
-    area: 3474.22
+    - name: metadata_storage
+      estimator: Aladdin_table
+  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].weight_spad
+    area: 3013.83
     primitive_estimations:
     - name: storage
       estimator: Cacti
-    - name: address_generators[0..1]
+    - name: metadata_storage
       estimator: Aladdin_table
-  - name: eyeriss_168.PE[0..167].psum_spad
-    area: 537.18
+  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].reg
+    area: 71.76
     primitive_estimations:
     - name: storage
       estimator: Aladdin_table
-    - name: address_generators[0..1]
+    - name: metadata_storage
       estimator: Aladdin_table
-  - name: eyeriss_168.PE[0..167].MACs
-    area: 1239.5
+  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].MAC
+    area: 332.25
     primitive_estimations:
     - name: multiplier
       estimator: Aladdin_table
     - name: adder
       estimator: Aladdin_table
-  - name: eyeriss_168.DRAM
+  - name: eyeriss_v2.BackingStorage
     area: 0
     primitive_estimations:
     - name: storage
-      estimator: Cacti
+      estimator: 65nm_estimator
     - name: metadata_storage
-      estimator: Cacti
-  - name: eyeriss_168.shared_glb
+      estimator: 65nm_estimator
+  - name: eyeriss_v2.glb_pe_cluster.glb_cluster[0..15].glb
     area: 641718.8125
     primitive_estimations:
     - name: storage
