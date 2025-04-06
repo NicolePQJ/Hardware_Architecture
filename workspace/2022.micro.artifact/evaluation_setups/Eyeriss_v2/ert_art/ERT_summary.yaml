@@ -1,92 +1,119 @@
 ERT_summary:
   version: 0.3
   table_summary:
-  - name: eyeriss_168.DummyBuffer[0..13]
+  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].psum_spad
     actions:
     - name: read
-      average_energy: 0.0
-      max_energy: 0
-      min_energy: 0
+      average_energy: 0.16654
+      max_energy: 0.32508
+      min_energy: 0.00801
     - name: write
-      average_energy: 0.0
-      max_energy: 0
-      min_energy: 0
+      average_energy: 0.16654
+      max_energy: 0.32508
+      min_energy: 0.00801
     - name: idle
-      energy: 0
+      energy: 0.00801
     primitive_estimation(s):
-    - name: eyeriss_168.DummyBuffer[0..13]
+    - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].psum_spad
       estimator: Aladdin_table
-  - name: eyeriss_168.PE[0..167].ifmap_spad
+  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].iact_spad
     actions:
     - name: write
-      energy: 0.19652
+      energy: 0.13003
     - name: read
-      energy: 0.19652
+      energy: 0.13003
     - name: gated_write
-      energy: 0.00595
+      energy: 0.0032
     - name: gated_read
-      energy: 0.00595
-    - name: idle
-      energy: 0.01242
+      energy: 0.0032
+    - name: metadata_read
+      energy: 0.14934
+    - name: metadata_write
+      energy: 0.14934
+    - name: gated_metadata_read
+      energy: 0.00195
+    - name: gated_metadata_write
+      energy: 0.00195
     primitive_estimation(s):
     - name: storage
       estimator: Aladdin_table
-    - name: address_generators[0]
+    - name: metadata_storage
       estimator: Aladdin_table
-    - name: address_generators[1]
-      estimator: Aladdin_table
-  - name: eyeriss_168.PE[0..167].weights_spad
+  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].weight_spad
     actions:
     - name: write
-      energy: 1.13063
+      energy: 0.51919
     - name: read
-      energy: 0.71011
+      energy: 0.47678
     - name: gated_write
-      energy: 0.00595
+      energy: 1.0e-05
     - name: gated_read
-      energy: 0.00595
-    - name: idle
-      energy: 0.00596
+      energy: 1.0e-05
+    - name: metadata_read
+      energy: 0.88442
+    - name: metadata_write
+      energy: 0.88442
+    - name: gated_metadata_read
+      energy: 0.00635
+    - name: gated_metadata_write
+      energy: 0.00635
     primitive_estimation(s):
     - name: storage
       estimator: Cacti
-    - name: address_generators[0]
+    - name: metadata_storage
       estimator: Aladdin_table
-    - name: address_generators[1]
-      estimator: Aladdin_table
-  - name: eyeriss_168.PE[0..167].psum_spad
+  - name: eyeriss_v2_PE.PE.reg
     actions:
     - name: write
-      energy: 0.25281
+      energy: 0.072
     - name: read
-      energy: 0.25281
+      energy: 0.072
     - name: gated_write
-      energy: 0.00595
+      energy: 0.00296
     - name: gated_read
-      energy: 0.00595
-    - name: idle
-      energy: 0.01232
+      energy: 0.00296
+    - name: metadata_read
+      energy: 0.036
+    - name: metadata_write
+      energy: 0.036
+    - name: gated_metadata_read
+      energy: 0.00148
+    - name: gated_metadata_write
+      energy: 0.00148
     primitive_estimation(s):
     - name: storage
       estimator: Aladdin_table
-    - name: address_generators[0]
+    - name: metadata_storage
       estimator: Aladdin_table
-    - name: address_generators[1]
-      estimator: Aladdin_table
-  - name: eyeriss_168.PE[0..167].MACs
+  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].MAC
     actions:
     - name: mac_random
-      energy: 2.20035
-    - name: mac_reuse
-      energy: 2.20035
+      energy: 0.5608
     - name: mac_gated
-      energy: 0.06595
+      energy: 0.01798
+    - name: mac_skipped
+      energy: 0.01798
     primitive_estimation(s):
     - name: multiplier
       estimator: Aladdin_table
     - name: adder
       estimator: Aladdin_table
-  - name: eyeriss_168.DRAM
+  - name: eyeriss_v2.BackingStorage
+    actions:
+    - name: write
+      energy: 0
+    - name: read
+      energy: 0
+    - name: metadata_read
+      energy: 0
+    - name: metadata_write
+      energy: 0
+    primitive_estimation(s):
+    - name: storage
+      estimator: 65nm_estimator
+    - name: metadata_storage
+      estimator: 65nm_estimator
+  - name: eyeriss_v2.DRAM
     actions:
     - name: write
       energy: 512
@@ -111,7 +138,7 @@ ERT_summary:
       estimator: Cacti
     - name: metadata_storage
       estimator: Cacti
-  - name: eyeriss_168.shared_glb
+  - name: eyeriss_v2.glb_pe_cluster.glb_cluster[0..15].glb
     actions:
     - name: write
       energy: 37.1554
