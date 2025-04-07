@@ -57,13 +57,18 @@ def main(stats_prefix):
         else:
             eyeriss_DRAM_accesses = job_DRAM_weight_accesses + job_DRAM_iact_accesses/0.76 + job_DRAM_oact_accesses/0.76
         
-        print(job_name, ": ",  round(baseline_DRAM_accesses/eyeriss_DRAM_accesses, 1))
+#         print(job_name, ": ",  round(baseline_DRAM_accesses/eyeriss_DRAM_accesses, 1))
+#         print(baseline_DRAM_accesses)
+#         print(eyeriss_DRAM_accesses)
+#         print(job_output_stats)
     normalized_energy_data_per_job = {}
+    energy_data_per_job = {}
     total_energy_usage = {}
     for job, energy_data in energy_values.items():
         total_energy = sum(energy_data.values())
         total_energy_usage[job] = total_energy
         normalized_energy_data_per_job[job] = {key: value / total_energy for key, value in energy_data.items()}
+        energy_data_per_job[job] = {key: value for key, value in energy_data.items()}
 
     # Plotting
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -96,12 +101,25 @@ def main(stats_prefix):
 #     plt.show()
     output_fig_path = os.path.join(job_info["path"], "output", "energy_breakdown_plot.png")
     plt.savefig(output_fig_path, bbox_inches='tight')
+    plt.close()
+    print("Saved:", output_fig_path)
     
     #plot energy usage
     jobs = list(total_energy_usage.keys())
     energy = list(total_energy_usage.values())
-    fig, ax = plt.subplots(figsize=(10, 6))  # You can adjust the figure size as needed
-    ax.bar(jobs, energy, color='skyblue')
+    fig, ax = plt.subplots(figsize=(12, 6))  # You can adjust the figure size as needed
+#     ax.bar(jobs, energy, color='skyblue')
+    
+    
+    bottoms = {job: 0 for job in job_names}  # Start from 0 for each job
+    for i, component in enumerate(components):
+        # Get the energy values for the current component across all jobs
+        energy_value = [energy_data_per_job[job][component] for job in job_names]
+
+        # Plot the bars for this component
+        for j, job in enumerate(job_names):
+            ax.bar(job, energy_value[j], bottom=bottoms[job], color=plt.cm.tab10(i), label=component if j == 0 else "")
+            bottoms[job] += energy_value[j]  # Update the bottom for the next component
 
     # Add labels and title
     ax.set_xlabel('Job Name')
@@ -110,6 +128,8 @@ def main(stats_prefix):
     
     output_fig_2_path = os.path.join(job_info["path"], "output", "total_energy_plot.png")
     plt.savefig(output_fig_2_path, bbox_inches='tight')
+    plt.close()
+    print("Saved:", output_fig_2_path)
 
 if __name__ == "__main__":
 

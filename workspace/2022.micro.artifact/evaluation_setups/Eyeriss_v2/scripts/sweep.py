@@ -125,11 +125,13 @@ if __name__ == "__main__":
     parser.add_argument('--max_layers', type=int, default=100, help='max number of layers to run')
     parser.add_argument('--no_overwrite', action="store_true", help='skip job there is already some previous results in the output folder')
     parser.add_argument('--search_mapping', action="store_true", help='search for optimal mapping instead of using the provided mappings, this option will make the experiment run much slower')
+#     parser.add_argument('--workload_path', type=str, default="workload", help='use a workload other than the default alexNet')
     options = parser.parse_args()
    
     OUT_DIR = options.output_dir
     OVERWRITE = not options.no_overwrite 
     USE_MODEL = not options.search_mapping 
+#     workload_dir_path = os.path.join(this_directory, "..", options.workload_path)
     
     main()
 
