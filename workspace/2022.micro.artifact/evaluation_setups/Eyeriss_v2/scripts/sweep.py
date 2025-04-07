@@ -7,14 +7,14 @@ this_directory = os.path.dirname(this_file_path)
 os.chdir(this_directory)
 
 # paths to important input specs
-arch_file_path = os.path.join(this_directory, "..","architecture", "arch.yaml")
+arch_file_path = os.path.join(this_directory, "..", "architecture", "new_arch.yaml")
 components_file_path = os.path.join(this_directory, "..", "architecture", "components.yaml")
-sparse_iact_opt_file_path = os.path.join(this_directory, "..", "sparse_opt", "sparse_iact_opt.yaml")
+sparse_iact_opt_file_path = os.path.join(this_directory, "..","sparse_opt", "sparse_iact_opt.yaml")
 dense_iact_opt_file_path = os.path.join(this_directory, "..", "sparse_opt", "dense_iact_opt.yaml")
 workload_dir_path = os.path.join(this_directory, "..", "workload")
-ert_path = os.path.join(this_directory, "..", "ert_art", "ERT.yaml")
-art_path = os.path.join(this_directory, "..", "ert_art", "ART.yaml")
-mappings_dir = os.path.join(this_directory, "..", "mappings_found")
+ert_path = os.path.join(this_directory, "..","ert_art", "ERT.yaml")
+art_path = os.path.join(this_directory, "..","ert_art", "ART.yaml")
+mappings_dir = os.path.join(this_directory, "..","mappings_found")
 dataflow_file_path = os.path.join(this_directory, "..", "dataflow", "row_stationary.yaml")
 mapper_file_path = os.path.join(this_directory, "..", "mapper", "mapper.yaml")
 
@@ -72,9 +72,16 @@ def run_timeloop(job_name, input_dict, ert_path, art_path, base_dir):
         subprocess_cmd = ["timeloop-model", input_file_path, os.path.join(base_dir, "ERT.yaml"), os.path.join(base_dir, "ART.yaml"), os.path.join(base_dir, "map.yaml")]
         p = subprocess.Popen(subprocess_cmd)
 
+def no_op_constructor(loader, tag_suffix, node):
+    """
+    A catch-all constructor that ignores the custom tag
+    and just constructs the node as a normal Python dict
+    (or list, etc.) using safe_load defaults.
+    """
+    return loader.construct_object(node, deep=True)
 
 def main():
-    
+    yaml.SafeLoader.add_multi_constructor('', no_op_constructor)
     arch_spec = yaml.load(open(arch_file_path), Loader = yaml.SafeLoader)
     component_spec = yaml.load(open(components_file_path), Loader = yaml.SafeLoader)
     constraints_spec = yaml.load(open(dataflow_file_path), Loader = yaml.SafeLoader)

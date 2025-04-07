@@ -1,31 +1,31 @@
 ART_summary:
   version: 0.3
   table_summary:
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].psum_spad
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].psum_spad
     area: 1020.59
     primitive_estimations: Cacti
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].iact_spad
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].iact_spad
     area: 485.1975
     primitive_estimations:
     - name: storage
       estimator: Aladdin_table
     - name: metadata_storage
       estimator: Aladdin_table
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].weight_spad
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].weight_spad
     area: 3013.83
     primitive_estimations:
     - name: storage
       estimator: Cacti
     - name: metadata_storage
       estimator: Aladdin_table
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].reg
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].reg
     area: 71.76
     primitive_estimations:
     - name: storage
       estimator: Aladdin_table
     - name: metadata_storage
       estimator: Aladdin_table
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].MAC
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].MAC
     area: 332.25
     primitive_estimations:
     - name: multiplier
@@ -39,7 +39,7 @@ ART_summary:
       estimator: 65nm_estimator
     - name: metadata_storage
       estimator: 65nm_estimator
-  - name: eyeriss_v2.glb_pe_cluster.glb_cluster[0..15].glb
+  - name: eyeriss_v2.glb_cluster[0..15].glb
     area: 641718.8125
     primitive_estimations:
     - name: storage

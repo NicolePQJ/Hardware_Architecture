@@ -1,17 +1,17 @@
 ART:
   version: 0.3
   tables:
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].psum_spad
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].psum_spad
     area: 1020.59
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].iact_spad
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].iact_spad
     area: 485.1975
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].weight_spad
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].weight_spad
     area: 3013.83
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].reg
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].reg
     area: 71.76
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].MAC
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].MAC
     area: 332.25
   - name: eyeriss_v2.BackingStorage
     area: 0
-  - name: eyeriss_v2.glb_pe_cluster.glb_cluster[0..15].glb
+  - name: eyeriss_v2.glb_cluster[0..15].glb
     area: 641718.8125

@@ -5,14 +5,14 @@ architecture:
       attributes:
         technology: 45nm
       local:
-#         - name: BackingStorage
-#           class: DRAM  # a storage with inifinite capacity, so DRAM in timeloop repr
-#           subclass: DummyStorage
-#           attributes:
-#             width: 64
-#             block_size: 8
-#             datawidth: 8
-#             metadata_storage_width: 8
+        - name: BackingStorage
+          class: DRAM  # a storage with inifinite capacity, so DRAM in timeloop repr
+          subclass: DummyStorage
+          attributes:
+            width: 64
+            block_size: 8
+            datawidth: 8
+            metadata_storage_width: 8
         - name: DRAM
           class: DRAM
           subclass: DRAM_metadata
@@ -26,24 +26,23 @@ architecture:
       subtree:
         - name: glb_cluster[0..15]
           local:
-            - name: glb
-              class: storage
-              subclass: SRAM
-              attributes:
-                data_storage_depth: 12800 
-                data_storage_width: 64
-                block_size: 4
-                n_banks: 7
-                read_bandwidth: 16
-                write_bandwidth: 16
-                metadata_storage_depth: 0
-                metadata_storage_width: 0
-                metadata_block_size: 1
-                metadata_datawidth: 0
-                metadata_counter_width: 9
-                decompression_supported: true  # from DRAM decompression
-                compression_supported: true    # to DRAM compression
-                meshX: 8
+          - name: glb
+            class: smartbuffer_metadata
+            attributes:
+              data_storage_depth: 12800 
+              data_storage_width: 64
+              block_size: 4
+              n_banks: 7
+              read_bandwidth: 16
+              write_bandwidth: 16
+              metadata_storage_depth: 0
+              metadata_storage_width: 0
+              metadata_block_size: 1
+              metadata_datawidth: 0
+              metadata_counter_width: 9
+              decompression_supported: true  # from DRAM decompression
+              compression_supported: true    # to DRAM compression
+              meshX: 8
 
       subtree:
         - name: PE_cluster[0..15]

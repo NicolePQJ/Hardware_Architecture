@@ -1,7 +1,7 @@
 ERT_summary:
   version: 0.3
   table_summary:
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].psum_spad
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].psum_spad
     actions:
     - name: read
       average_energy: 0.16654
@@ -14,9 +14,9 @@ ERT_summary:
     - name: idle
       energy: 0.00801
     primitive_estimation(s):
-    - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].psum_spad
+    - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].psum_spad
       estimator: Aladdin_table
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].iact_spad
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].iact_spad
     actions:
     - name: write
       energy: 0.13003
@@ -39,7 +39,7 @@ ERT_summary:
       estimator: Aladdin_table
     - name: metadata_storage
       estimator: Aladdin_table
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].weight_spad
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].weight_spad
     actions:
     - name: write
       energy: 0.51919
@@ -85,7 +85,7 @@ ERT_summary:
       estimator: Aladdin_table
     - name: metadata_storage
       estimator: Aladdin_table
-  - name: eyeriss_v2.glb_pe_cluster.PE_cluster[0..15].PE[0..11].MAC
+  - name: eyeriss_v2.PE_cluster[0..15].PE[0..11].MAC
     actions:
     - name: mac_random
       energy: 0.5608
@@ -138,7 +138,7 @@ ERT_summary:
       estimator: Cacti
     - name: metadata_storage
       estimator: Cacti
-  - name: eyeriss_v2.glb_pe_cluster.glb_cluster[0..15].glb
+  - name: eyeriss_v2.glb_cluster[0..15].glb
     actions:
     - name: write
       energy: 37.1554
