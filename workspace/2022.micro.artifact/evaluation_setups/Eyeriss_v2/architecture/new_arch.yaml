@@ -108,6 +108,19 @@
 
 architecture:
   version: 0.3
+  # subtree:
+  #   - name: system
+  #     local:
+  #       - name: DRAM
+  #         class: DRAM
+  #         subclass: DRAM_metadata
+  #         attributes:
+  #           width: 64
+  #           block_size: 4
+  #           datawidth: 16
+  #           metadata_datawidth: 5
+  #           metadata_storage_width: 5 
+        
   subtree:
     - name: eyeriss_v2
       attributes:
@@ -130,38 +143,69 @@ architecture:
             datawidth: 16
             metadata_datawidth: 5
             metadata_storage_width: 5 
+
         
       subtree:
         - name: glb_pe_cluster[0..15]
+          attributes:
+            meshX: 8
           local:
-            - name: glb
+            # - name: glb
+            #   class: smartbuffer_metadata
+            #   attributes:
+            #     data_storage_depth: 1536
+            #     data_storage_width: 64
+            #     block_size: 4
+            #     n_banks: 7
+            #     read_bandwidth: 512
+            #     write_bandwidth: 512
+            #     metadata_storage_depth: 0
+            #     metadata_storage_width: 0
+            #     metadata_block_size: 1
+            #     metadata_datawidth: 0
+            #     metadata_counter_width: 9
+                #decompression_supported: true  # from DRAM decompression
+                #compression_supported: true    # to DRAM compression
+                #meshX: 8
+            - name: glb_iact
               class: smartbuffer_metadata
               attributes:
-                data_storage_depth: 1536
+                data_storage_depth: 576
                 data_storage_width: 64
                 block_size: 4
-                n_banks: 7
-                read_bandwidth: 512
-                write_bandwidth: 512
+                n_banks: 3
+                read_bandwidth: 192
+                write_bandwidth: 192
                 metadata_storage_depth: 0
                 metadata_storage_width: 0
                 metadata_block_size: 1
                 metadata_datawidth: 0
                 metadata_counter_width: 9
-                #decompression_supported: true  # from DRAM decompression
-                #compression_supported: true    # to DRAM compression
-                #meshX: 8
+            - name: glb_psum
+              class: smartbuffer_metadata
+              attributes:
+                data_storage_depth: 960
+                data_storage_width: 64
+                block_size: 4
+                n_banks: 4
+                read_bandwidth: 256
+                write_bandwidth: 256
+                metadata_storage_depth: 0
+                metadata_storage_width: 0
+                metadata_block_size: 1
+                metadata_datawidth: 0
+                metadata_counter_width: 9
           subtree:
             - name: PE[0..11]
-              # attributes:
-              #   meshX: 8
+              attributes:
+                meshX: 3
               local:
                 - name: iact_spad
                   class: storage
                   subclass: SRAM_MD 
                   attributes:
-                    data_storage_depth: 16
-                    data_storage_width: 8
+                    data_storage_depth: 12
+                    data_storage_width: 16
                     metadata_storage_depth: 25  # 25  # 9 addr entries, 16 run entries   
                     metadata_storage_width: 4
                     datawidth: 8
@@ -171,8 +215,8 @@ architecture:
                   class: storage
                   subclass: SRAM_MD
                   attributes:
-                    data_storage_depth: 192      
-                    data_storage_width: 8
+                    data_storage_depth: 96      
+                    data_storage_width: 24
                     metadata_storage_depth: 128  # 16 7b addr entries, 192 4b run entries
                     metadata_storage_width: 8
                     datawidth: 8

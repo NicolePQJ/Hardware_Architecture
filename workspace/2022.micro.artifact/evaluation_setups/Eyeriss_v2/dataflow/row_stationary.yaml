@@ -13,10 +13,14 @@ architecture_constraints:
     type: bypass
     bypass: [Weights, Outputs]
     keep: [Inputs]
-  # - target: glb
-  #   type: bypass
-  #   bypass: [Weights]
-  #   keep: [Inputs, Outputs]
+  - target: glb_iact
+    type: bypass
+    bypass: [Weights, Outputs]
+    keep: [Inputs]
+  - target: glb_psum
+    type: bypass
+    bypass: [Weights, Inputs]
+    keep: [Outputs]
   # - target: DummyBuffer
   #   type: bypass
   #   bypass: [Inputs, Outputs, Weights]
@@ -46,7 +50,7 @@ architecture_constraints:
   - target: weight_spad
     type: temporal
     permutation: NMPQS CR
-    factors: M=1 P=1 Q=1 S=1 R=0 #N=1
+    factors: M=1 P=1 Q=1 S=1 R=1 #N=1
   - target: iact_spad
     type: temporal
     permutation: NMCPQRS

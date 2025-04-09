@@ -15,7 +15,7 @@ from sweep import workload_dir_path
 
 # Extract memory accesses from txt file (cannot find this information in parsed file)
 def memory_accesses(file_path):
-    components = {"psum_spad", "weight_spad", "iact_spad", "glb"}
+    components = {"psum_spad", "weight_spad", "iact_spad", "glb_psum", "glb_iact", "DRAM"}
     results = {}
     curr = None
 
