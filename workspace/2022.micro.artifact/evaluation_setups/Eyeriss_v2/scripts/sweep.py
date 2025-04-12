@@ -11,7 +11,7 @@ arch_file_path = os.path.join(this_directory, "..", "architecture", "new_arch.ya
 components_file_path = os.path.join(this_directory, "..", "architecture", "components.yaml")
 sparse_iact_opt_file_path = os.path.join(this_directory, "..","sparse_opt", "sparse_iact_opt.yaml")
 dense_iact_opt_file_path = os.path.join(this_directory, "..", "sparse_opt", "dense_iact_opt.yaml")
-workload_dir_path = os.path.join(this_directory, "..", "workload")
+workload_dir_path = os.path.join(this_directory, "..", "workload_alexnet")
 ert_path = os.path.join(this_directory, "..","ert_art", "ERT.yaml")
 art_path = os.path.join(this_directory, "..","ert_art", "ART.yaml")
 mappings_dir = os.path.join(this_directory, "..","mappings_found")
@@ -40,7 +40,7 @@ def run_timeloop(job_name, input_dict, ert_path, art_path, base_dir):
     shutil.copy(art_path, os.path.join(base_dir, "ART.yaml"))
     
     if not USE_MODEL: 
-        input_dict.pop("mapping")
+        input_dict.pop("mapping", 0)
         yaml.dump(input_dict, open(input_file_path, "w"), default_flow_style=False)
         os.chdir(output_dir)
         subprocess_cmd = ["timeloop-mapper", input_file_path, os.path.join(base_dir, "ERT.yaml"), os.path.join(base_dir, "ART.yaml")]
@@ -49,7 +49,8 @@ def run_timeloop(job_name, input_dict, ert_path, art_path, base_dir):
 
         p = subprocess.Popen(subprocess_cmd)
         try:
-            p.communicate(timeout=1200) # wait for at most 20 min
+            p.communicate(timeout=300) # wait for at most 5 min
+#             p.communicate(timeout=1200) # wait for at most 20 min
         except KeyboardInterrupt:
            p = 0
            while p <= 60 and not os.path.exists(os.path.join(output_dir, "timeloop-mapper.map+stats.xml")):
@@ -91,8 +92,15 @@ def main():
 
     for layer in os.listdir(workload_dir_path):
         aggregated_input = {}
-        workload_spec = yaml.load(open(os.path.join(workload_dir_path, layer)), Loader = yaml.SafeLoader)
         
+        full_path = os.path.join(workload_dir_path, layer)
+        if os.path.isfile(full_path) and layer.endswith(('.yaml', '.yml')):
+            workload_spec = yaml.load(open(full_path), Loader=yaml.SafeLoader)
+        else:
+            continue
+#         workload_spec = yaml.load(open(os.path.join(workload_dir_path, layer)), Loader = yaml.SafeLoader)
+        print(full_path)
+        print(workload_spec["problem"]["instance"]["densities"]["Inputs"])
         dense_iact = workload_spec["problem"]["instance"]["densities"]["Inputs"] > 0.9
 
         if not dense_iact:             
@@ -101,13 +109,13 @@ def main():
             sparse_opt_spec = yaml.load (open(dense_iact_opt_file_path), Loader = yaml.SafeLoader)
        
         mapping_file_path = os.path.join(mappings_dir, layer)
-        mapping_spec = yaml.load(open(mapping_file_path), Loader = yaml.SafeLoader)
+#         mapping_spec = yaml.load(open(mapping_file_path), Loader = yaml.SafeLoader)
         
         aggregated_input.update(arch_spec)
         aggregated_input.update(component_spec)
         aggregated_input.update(sparse_opt_spec)
         aggregated_input.update(workload_spec)
-        aggregated_input.update(mapping_spec)
+#         aggregated_input.update(mapping_spec)
         aggregated_input.update(constraints_spec)
         aggregated_input.update(mapper_spec)
 
@@ -125,13 +133,13 @@ if __name__ == "__main__":
     parser.add_argument('--max_layers', type=int, default=100, help='max number of layers to run')
     parser.add_argument('--no_overwrite', action="store_true", help='skip job there is already some previous results in the output folder')
     parser.add_argument('--search_mapping', action="store_true", help='search for optimal mapping instead of using the provided mappings, this option will make the experiment run much slower')
-#     parser.add_argument('--workload_path', type=str, default="workload", help='use a workload other than the default alexNet')
+    parser.add_argument('--workload_path', type=str, default="workload_alexnet", help='use a workload other than the default alexNet')
     options = parser.parse_args()
    
     OUT_DIR = options.output_dir
     OVERWRITE = not options.no_overwrite 
     USE_MODEL = not options.search_mapping 
-#     workload_dir_path = os.path.join(this_directory, "..", options.workload_path)
+    workload_dir_path = os.path.join(this_directory, "..", options.workload_path)
     
     main()
 
