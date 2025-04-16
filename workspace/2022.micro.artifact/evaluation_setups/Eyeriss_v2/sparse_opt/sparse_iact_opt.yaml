@@ -24,9 +24,27 @@ sparse_optimizations:
               - format: RLE
                 flattened-rankIDs: [ [P, M, N, Q] ]
                 payload-word-bits: 5
-    - name: weight_spad
-      action-optimization:
-        - type: gating
-          options:
-            - target: Weights
-              condition-on: [ Inputs ]
+                
+#Gating (Originally from eyeriss v1)
+
+#     - name: weight_spad
+#       action-optimization:
+#         - type: gating
+#           options:
+#             - target: Weights
+#               condition-on: [ Inputs ]
+
+# Single Sided Skipping (In eyeriss v2)
+
+#     - name: weight_spad
+#       action-optimization:
+#         - type: gating
+#           options:
+#             - target: Inputs
+#               condition-on: [ Weights ]
+#     - name: psum_spad
+#       action-optimization:
+#         - type: skipping
+#           options:
+#             - target: Outputs
+#               condition-on: [ Inputs, Weights ]
