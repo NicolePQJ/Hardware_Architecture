@@ -1,6 +1,71 @@
 compound_components:
   version: 0.3
   classes:
+  - name: DRAM_metadata # storage with compressed data with gating/skipping support
+    attributes:
+      technology: must_specify
+      width: must_specify
+      metadata_datawidth: must_specify
+    subcomponents:
+      - name: storage
+        class: DRAM
+        attributes:
+          technology: technology
+          width: width
+      - name: metadata_storage
+        class: DRAM
+        attributes:
+          technology: technology
+          width: metadata_datawidth
+    actions:
+      - name: write
+        subcomponents:
+          - name: storage
+            actions:
+              - name: write
+      - name: read
+        subcomponents:
+          - name: storage
+            actions:
+              - name: read
+      - name: gated_write
+        subcomponents:
+          - name: storage
+            actions:
+            - name: idle
+      - name: gated_read
+        subcomponents:
+          - name: storage
+            actions:
+            - name: idle
+      - name: idle
+        subcomponents:
+          - name: storage
+            actions:
+              - name: idle
+          - name: metadata_storage
+            actions:
+              - name: idle
+      - name: metadata_write
+        subcomponents:
+          - name: metadata_storage
+            actions:
+              - name: write
+      - name: metadata_read
+        subcomponents:
+          - name: metadata_storage # read out the number of intermediate zeros
+            actions:
+              - name: read
+      - name: metadata_gated_read
+        subcomponents:
+          - name: metadata_storage
+            actions:
+              - name: idle
+      - name: metadata_gated_write
+        subcomponents:
+          - name: metadata_storage
+            actions:
+              - name: idle
   - name: SRAM_MD
     attributes:
       # attributes that must be specified

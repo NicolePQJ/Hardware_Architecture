@@ -12,7 +12,7 @@ problem:
     Wdilation: 1
     Wstride: 1
     densities:
-      Inputs: 0.6
+      Inputs: 0.01 #0.6
       Weights: 0.385306
       Outputs: 0.169
   shape:

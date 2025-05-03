@@ -24,6 +24,9 @@ architecture_constraints:
   # - target: DummyBuffer
   #   type: bypass
   #   bypass: [Inputs, Outputs, Weights]
+  # - target: DummyBuffer
+  #   type: bypass
+  #   bypass: [Inputs, Outputs, Weights]
   # - target: shared_glb
   #   type: bypass
   #   bypass: [Weights]
@@ -42,44 +45,76 @@ architecture_constraints:
   #   factors: C=1 P=1 R=1 S=1 N=1
 
   # one ofmap position but of different output channels
+  # - target: DRAM
+  #   type: spatial
+  #   split: 16
+  #   permutation: NCPQRSM
+  #   factors:
+  #     N: 1
+  #     C: 1
+  #     P: 1
+  #     R: 1
+  #     S: 1
+  # - target: glb_psum
+  #   type: spatial
+  #   split: 16
+  #   permutation: NCPQRSM
+  #   factors:
+  #     N: 1
+  #     C: 1
+  #     P: 1
+  #     R: 1
+  #     S: 1
   - target: psum_spad
     type: temporal
-    permutation: NCPQRS M
+    permutation: NCPQRSM
     factors: C=1 R=1 S=1 P=1 Q=1 #N=1
   # row stationary -> 1 row at a time
   - target: weight_spad
     type: temporal
-    permutation: NMPQS CR
-    factors: M=1 P=1 Q=1 S=1 R=1 #N=1
+    permutation: NMPQSCR
+    factors: R=1 S=1 M=1 P=1 Q=1 S=1 R=1 #N=1
   - target: iact_spad
     type: temporal
     permutation: NMCPQRS
-    factors: M=1 C=1 P=1 Q=1 R=1 S=1 #N=1
-  # enforce the hardware limit of the bypassing everything
-  # - target: DummyBuffer
-  #   type: temporal
-  #   factors: N=1 M=1 C=1 P=1 Q=1 R=1 S=1 
+    factors: R=1 M=1 C=1 P=1 Q=1 R=1 S=1 #N=1
+#   # enforce the hardware limit of the bypassing everything
+#   # - target: DummyBuffer
+#   #   type: temporal
+#   #   factors: N=1 M=1 C=1 P=1 Q=1 R=1 S=1
+  # - target: glb_iact
+  #   type: temporal                  
+  #   permutation: N C P R S Q M   
+  #   factors: N=1 C=1 P=1 Q=1 R=1 S=1 M=1
+  # - target: glb_psum
+  #   type: temporal                  
+  #   permutation: N C P R S Q M   
+  #   factors: N=1 C=1 P=1 Q=1 R=1 S=1 M=1
 
-#
-# The following constraints are not limitations of the hardware architecture and dataflow,
-# but help limit the search space to speed up search
-#
+# #
+# # The following constraints are not limitations of the hardware architecture and dataflow,
+# # but help limit the search space to speed up search
+# #
 
 mapspace_constraints:
   targets:
-    # intuitive optimization to reduce map space size
-    # the factors of these are 1 anyways, so the order does not really matter
-    # - target: DummyBuffer
-    #   type: temporal
-    #   permutation: NMCPQRS
-    # intuitive optimization for row stationary
-    # -> process a row/col of the output before going to the next one
-#     - target: glb
-#       type: temporal
-#       permutation: QRSC PNM
-#       factors: Q=1 R=1 S=1 P=0
-    # intuitive optimization to reduce map space size
+#     # intuitive optimization to reduce map space size
+#     # the factors of these are 1 anyways, so the order does not really matter
+#     # - target: DummyBuffer
+#     #   type: temporal
+#     #   permutation: NMCPQRS
+#     # intuitive optimization for row stationary
+#     # -> process a row/col of the output before going to the next one
+# #     - target: glb
+# #       type: temporal
+# #       permutation: QRSC PNM
+# #       factors: Q=1 R=1 S=1 P=0
+#     # intuitive optimization to reduce map space size
     - target: DRAM
       type: temporal
       permutation: RSP CMNQ
       factors: R=1 S=1 P=1
+#     # - target: DummyBuffer
+#     #   type: temporal
+#     #   permutation: RSP CMNQ
+#     #   factors: R=1 S=1 P=1 C=1 M=1 N=1 Q=1

@@ -24,6 +24,68 @@ sparse_optimizations:
               - format: RLE
                 flattened-rankIDs: [ [P, M, N, Q] ]
                 payload-word-bits: 5
+          
+          - name: Weights
+            ranks:
+              - format: UOP
+                flattened-rankIDs: [ [R, S, C, M] ]
+              - format: RLE
+                flattened-rankIDs: [ [R, S, C, M] ]
+                payload-word-bits: 5
+
+    # - name: glb_iact
+    #   representation-format:
+    #     data-spaces:
+    #       - name: Inputs
+    #         ranks:
+    #           # - format: UOP
+    #             #flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+    #           - format: RLE
+    #           - format: RLE
+    #             # flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+    #             # payload-word-bits: 5
+
+    # - name: glb_psum
+    #   representation-format:
+    #       - name: Outputs
+    #         ranks:
+    #           - format: UOP
+    #             flattened-rankIDs: [ [P, M, N, Q] ]
+    #           - format: RLE
+    #             flattened-rankIDs: [ [P, M, N, Q] ]
+    #             payload-word-bits: 5
+          
+    # - name: weight_spad
+    #   representation-format:
+    #       - name: Weights
+    #         ranks:
+    #           # - format: UOP
+    #             #flattened-rankIDs: [ [R, S, C, M] ]
+    #           - format: RLE
+              
+                # flattened-rankIDs: [ [R, S, C, M] ]
+                # payload-word-bits: 5
+
+    # - name: psum_spad
+    #   representation-format:
+    #       - name: Outputs
+    #         ranks:
+    #           - format: UOP
+    #             flattened-rankIDs: [ [P, M, N, Q] ]
+    #           - format: RLE
+    #             flattened-rankIDs: [ [P, M, N, Q] ]
+    #             payload-word-bits: 5
+
+    # - name: iact_spad
+    #   representation-format:
+    #     data-spaces:
+    #       - name: Inputs
+    #         ranks:
+    #           # - format: UOP
+    #             #flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+    #           - format: RLE
+    #             # flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+    #             # payload-word-bits: 5
                 
 #Gating (Originally from eyeriss v1)
 
@@ -42,9 +104,28 @@ sparse_optimizations:
 #           options:
 #             - target: Inputs
 #               condition-on: [ Weights ]
-#     - name: psum_spad
-#       action-optimization:
-#         - type: skipping
-#           options:
-#             - target: Outputs
-#               condition-on: [ Inputs, Weights ]
+    # - name: weight_spad
+    #   action-optimization:
+    #     - type: skipping
+    #       options:
+    #         - target: Weights
+    #           condition-on: [ Inputs ]
+    # - name: iact_spad
+    #   action-optimization:
+    #     - type: skipping
+    #       options:
+    #         - target: Inputs
+    #           condition-on: [ Weights ]
+  
+    # - name: psum_spad
+    #   action-optimization:
+    #     - type: skipping
+    #       options:
+    #         - target: Outputs
+    #           condition-on: [ Inputs, Weights ]
+
+    # - name: MAC
+    #   action-optimization:
+    #     - type: gating
+    #       options:
+    #         - target: 

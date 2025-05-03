@@ -43,7 +43,8 @@ def run_timeloop(job_name, input_dict, ert_path, art_path, base_dir):
         input_dict.pop("mapping")
         yaml.dump(input_dict, open(input_file_path, "w"), default_flow_style=False)
         os.chdir(output_dir)
-        subprocess_cmd = ["timeloop-mapper", input_file_path, os.path.join(base_dir, "ERT.yaml"), os.path.join(base_dir, "ART.yaml")]
+        #subprocess_cmd = ["timeloop-mapper", input_file_path, os.path.join(base_dir, "ERT.yaml"), os.path.join(base_dir, "ART.yaml")]
+        subprocess_cmd = ["timeloop-mapper", input_file_path]
 
         print("\tRunning test: ", job_name)
 
@@ -69,7 +70,8 @@ def run_timeloop(job_name, input_dict, ert_path, art_path, base_dir):
         yaml.dump(model_input_dict, open(input_file_path, "w"), default_flow_style=False)
         
         os.chdir(output_dir)
-        subprocess_cmd = ["timeloop-model", input_file_path, os.path.join(base_dir, "ERT.yaml"), os.path.join(base_dir, "ART.yaml"), os.path.join(base_dir, "map.yaml")]
+        #subprocess_cmd = ["timeloop-model", input_file_path, os.path.join(base_dir, "ERT.yaml"), os.path.join(base_dir, "ART.yaml"), os.path.join(base_dir, "map.yaml")]
+        subprocess_cmd = ["timeloop-model", input_file_path, os.path.join(base_dir, "map.yaml")]
         p = subprocess.Popen(subprocess_cmd)
 
 
