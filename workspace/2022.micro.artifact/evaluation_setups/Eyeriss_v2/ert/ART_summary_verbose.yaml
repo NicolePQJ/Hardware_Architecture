@@ -1,0 +1,114 @@
+ART_summary:
+  version: 0.3
+  table_summary:
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].psum_spad
+    area: 1020.59
+    primitive_estimations: Cacti
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].iact_spad
+    area: 498.0375
+    primitive_estimations:
+    - name: storage
+      estimator: Aladdin_table
+      area: 200.68
+      area_share: 1
+      total_component_area: 200.68
+    - name: metadata_storage
+      estimator: Aladdin_table
+      area: 297.3575
+      area_share: 1
+      total_component_area: 297.3575
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].weight_spad
+    area: 3309.62
+    primitive_estimations:
+    - name: storage
+      estimator: Cacti
+      area: 2303.63
+      area_share: 1
+      total_component_area: 2303.63
+    - name: metadata_storage
+      estimator: Cacti
+      area: 1005.99
+      area_share: 1
+      total_component_area: 1005.99
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].reg
+    area: 47.84
+    primitive_estimations:
+    - name: storage
+      estimator: Aladdin_table
+      area: 47.84
+      area_share: 1
+      total_component_area: 47.84
+    - name: metadata_storage
+      estimator: Cacti
+      area: 0
+      area_share: 1
+      total_component_area: 0
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].MAC
+    area: 332.25
+    primitive_estimations:
+    - name: multiplier
+      estimator: Aladdin_table
+      area: 287.5
+      area_share: 1
+      total_component_area: 287.5
+    - name: adder
+      estimator: Aladdin_table
+      area: 44.75
+      area_share: 1
+      total_component_area: 44.75
+  - name: eyeriss_v2.glb_pe_cluster[0..15].glb_iact
+    area: 57208.59646
+    primitive_estimations:
+    - name: storage
+      estimator: Cacti
+      area: 56947.3
+      area_share: 1
+      total_component_area: 56947.3
+    - name: address_generators[0..1]
+      estimator: Aladdin_table
+      area: 35.55448
+      area_share: 1
+      total_component_area: 71.10896
+    - name: metadata_counters[0..1]
+      estimator: Aladdin_table
+      area: 50.34375
+      area_share: 1
+      total_component_area: 100.6875
+    - name: metadata_storage
+      estimator: Cacti
+      area: 0
+      area_share: 1
+      total_component_area: 0
+    - name: intersection_unit
+      estimator: Aladdin_table
+      area: 89.5
+      area_share: 1
+      total_component_area: 89.5
+  - name: eyeriss_v2.glb_pe_cluster[0..15].glb_psum
+    area: 88505.01132
+    primitive_estimations:
+    - name: storage
+      estimator: Cacti
+      area: 88238.0
+      area_share: 1
+      total_component_area: 88238.0
+    - name: address_generators[0..1]
+      estimator: Aladdin_table
+      area: 38.41191
+      area_share: 1
+      total_component_area: 76.82382
+    - name: metadata_counters[0..1]
+      estimator: Aladdin_table
+      area: 50.34375
+      area_share: 1
+      total_component_area: 100.6875
+    - name: metadata_storage
+      estimator: Cacti
+      area: 0
+      area_share: 1
+      total_component_area: 0
+    - name: intersection_unit
+      estimator: Aladdin_table
+      area: 89.5
+      area_share: 1
+      total_component_area: 89.5

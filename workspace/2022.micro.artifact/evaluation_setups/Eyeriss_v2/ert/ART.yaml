@@ -1,0 +1,17 @@
+ART:
+  version: 0.3
+  tables:
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].psum_spad
+    area: 1020.59
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].iact_spad
+    area: 498.0375
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].weight_spad
+    area: 3309.62
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].reg
+    area: 47.84
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].MAC
+    area: 332.25
+  - name: eyeriss_v2.glb_pe_cluster[0..15].glb_iact
+    area: 57208.59646
+  - name: eyeriss_v2.glb_pe_cluster[0..15].glb_psum
+    area: 88505.01132

@@ -1,0 +1,89 @@
+mapping:
+  - target: reg
+    type: datatype
+    keep:
+      - Inputs
+    bypass:
+      - Weights
+      - Outputs
+  - target: psum_spad
+    type: datatype
+    keep:
+      - Outputs
+    bypass:
+      - Weights
+      - Inputs
+  - target: weight_spad
+    type: datatype
+    keep:
+      - Weights
+    bypass:
+      - Inputs
+      - Outputs
+  - target: iact_spad
+    type: datatype
+    keep:
+      - Inputs
+    bypass:
+      - Weights
+      - Outputs
+  - target: glb_psum
+    type: datatype
+    keep:
+      - Outputs
+    bypass:
+      - Weights
+      - Inputs
+  - target: glb_iact
+    type: datatype
+    keep:
+      - Inputs
+    bypass:
+      - Weights
+      - Outputs
+  - target: DRAM
+    type: datatype
+    keep:
+      - Weights
+      - Inputs
+      - Outputs
+    bypass:
+      []
+  - target: reg
+    type: temporal
+    factors: C1 M2 R1 S1 N1 P1 Q1
+    permutation: MCRSNPQ
+  - target: psum_spad
+    type: temporal
+    factors: C1 M1 R1 S1 N2 P1 Q1
+    permutation: NCMRSPQ
+  - target: weight_spad
+    type: temporal
+    factors: C3 M1 R1 S1 N1 P1 Q1
+    permutation: CMRSNPQ
+  - target: iact_spad
+    type: temporal
+    factors: C1 M1 R1 S1 N2 P1 Q1
+    permutation: NCMRSPQ
+  - target: glb_psum
+    type: spatial
+    factors: C2 M2 R1 S3 N1 P1 Q1
+    permutation: CMSRNPQ
+    split: 3
+  - target: glb_psum
+    type: temporal
+    factors: C2 M16 R1 S1 N1 P13 Q1
+    permutation: PCMRSNQ
+  - target: glb_iact
+    type: temporal
+    factors: C4 M1 R1 S1 N1 P1 Q1
+    permutation: CMRSNPQ
+  - target: DRAM
+    type: spatial
+    factors: C2 M2 R3 S1 N1 P1 Q1
+    permutation: CMRSNPQ
+    split: 3
+  - target: DRAM
+    type: temporal
+    factors: C2 M2 R1 S1 N1 P1 Q13
+    permutation: CMQRSNP

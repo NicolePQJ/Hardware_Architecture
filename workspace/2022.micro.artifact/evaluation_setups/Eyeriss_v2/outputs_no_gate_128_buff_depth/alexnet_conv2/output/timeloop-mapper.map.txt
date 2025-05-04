@@ -1,0 +1,45 @@
+
+BackingStorage [ Weights:307200 (307200) Inputs:196608 (196608) Outputs:802816 (802816) ] 
+-----------------------------------------------------------------------------------------
+| for P in [0:2)
+|   for Q in [0:7)
+
+DRAM [ ] 
+--------
+|     for M in [0:4)
+|       for C in [0:3)
+|         for Q in [0:2) (Spatial-X)
+|           for N in [0:2) (Spatial-X)
+|             for C in [0:4) (Spatial-X)
+
+glb_iact [ Inputs:864 (864) ] 
+-----------------------------
+|               for M in [0:8)
+|                 for P in [0:7)
+
+glb_psum [ Outputs:64 (64) ] 
+----------------------------
+|                   for C in [0:2)
+|                     for R in [0:5)
+|                       for M in [0:2)
+|                         for S in [0:5) (Spatial-X)
+|                           for C in [0:2) (Spatial-X)
+
+iact_spad [ Inputs:8 (8) ] 
+--------------------------
+|                             for N in [0:2)
+
+weight_spad [ Weights:4 (4) ] 
+-----------------------------
+|                               for Q in [0:1)
+
+psum_spad [ Outputs:16 (16) ] 
+-----------------------------
+|                                 for Q in [0:1)
+
+reg [ ] 
+-------
+|                                   for Q in [0:2)
+|                                     for P in [0:2)
+|                                       for M in [0:4)
+

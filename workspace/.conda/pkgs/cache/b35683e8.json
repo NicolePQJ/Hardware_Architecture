@@ -1,4 +1,4 @@
-{"_url": "https://repo.anaconda.com/pkgs/main/noarch", "_etag": "W/\"65c80544e0fe526c8c4b55c196ee3457\"", "_mod": "Tue, 01 Apr 2025 18:39:26 GMT", "_cache_control": "public, max-age=30", 
+{"_url": "https://repo.anaconda.com/pkgs/main/noarch", "_etag": "W/\"7cb2f17237e20846240c828706593402\"", "_mod": "Tue, 15 Apr 2025 17:37:06 GMT", "_cache_control": "public, max-age=30", 
   "info": {
     "subdir": "noarch"
   },
@@ -10162,40 +10162,6 @@
       "timestamp": 1620060688668,
       "version": "1.8"
     },
-    "sphinxcontrib-applehelp-1.0.2-pyhd3eb1b0_0.tar.bz2": {
-      "build": "pyhd3eb1b0_0",
-      "build_number": 0,
-      "depends": [
-        "python >=3.5"
-      ],
-      "license": "BSD-2-Clause",
-      "license_family": "BSD",
-      "md5": "ac923499f97b9a9ab7c672b27cb2a1a8",
-      "name": "sphinxcontrib-applehelp",
-      "noarch": "python",
-      "sha256": "d4b89871d0b01c20d9aa253b2f46fb1c78cd75c91c20d63ff8cf2afd68ae3fca",
-      "size": 29488,
-      "subdir": "noarch",
-      "timestamp": 1611920848367,
-      "version": "1.0.2"
-    },
-    "sphinxcontrib-devhelp-1.0.2-pyhd3eb1b0_0.tar.bz2": {
-      "build": "pyhd3eb1b0_0",
-      "build_number": 0,
-      "depends": [
-        "python >=3.5"
-      ],
-      "license": "BSD-2-Clause",
-      "license_family": "BSD",
-      "md5": "bc39c2b70430734b5879d6b504e3311f",
-      "name": "sphinxcontrib-devhelp",
-      "noarch": "python",
-      "sha256": "8edb87f6abbb11d93df4b51037f6073415fe6f0ee6693944cd25f05e9cd6a052",
-      "size": 23620,
-      "subdir": "noarch",
-      "timestamp": 1611920929807,
-      "version": "1.0.2"
-    },
     "sphinxcontrib-jsmath-1.0.1-pyhd3eb1b0_0.tar.bz2": {
       "build": "pyhd3eb1b0_0",
       "build_number": 0,
@@ -10212,23 +10178,6 @@
       "subdir": "noarch",
       "timestamp": 1611920948846,
       "version": "1.0.1"
-    },
-    "sphinxcontrib-qthelp-1.0.3-pyhd3eb1b0_0.tar.bz2": {
-      "build": "pyhd3eb1b0_0",
-      "build_number": 0,
-      "depends": [
-        "python >=3.5"
-      ],
-      "license": "BSD-2-Clause",
-      "license_family": "BSD",
-      "md5": "08d67f73f640b4d1e5e8890a324b60e3",
-      "name": "sphinxcontrib-qthelp",
-      "noarch": "python",
-      "sha256": "a2594974c21898df67fceeeac7f12e5dd3c07fb7aae826eba2203b8812b801c8",
-      "size": 26262,
-      "subdir": "noarch",
-      "timestamp": 1611921062268,
-      "version": "1.0.3"
     },
     "sysroot-cos7-aarch64-2.17-hcebdbab_10.tar.bz2": {
       "build": "hcebdbab_10",
@@ -17077,6 +17026,24 @@
       "subdir": "noarch",
       "timestamp": 1630654503990,
       "version": "0.4.0"
+    },
+    "duckdb-1.2.1-hd3eb1b0_0.conda": {
+      "build": "hd3eb1b0_0",
+      "build_number": 0,
+      "depends": [
+        "python-duckdb >=1.2.1,<1.2.2.0a0"
+      ],
+      "legacy_bz2_md5": "b53875a8e0317d66ade96a591b29cab3",
+      "license": "MIT",
+      "license_family": "MIT",
+      "md5": "7816f7fc2db4c0fd735a8f4039a9f1f3",
+      "name": "duckdb",
+      "noarch": "generic",
+      "sha256": "0479ba33fc9d6eecbf75c192f2f8669fae3b14ee5972dfb81aa55a3d05dd2334",
+      "size": 6551,
+      "subdir": "noarch",
+      "timestamp": 1744669205542,
+      "version": "1.2.1"
     },
     "ecdsa-0.19.0-pyhd3eb1b0_0.conda": {
       "build": "pyhd3eb1b0_0",
@@ -24652,6 +24619,31 @@
       "subdir": "noarch",
       "timestamp": 1611515924403,
       "version": "2.4.0"
+    },
+    "markdownlit-0.0.7-pyhd3eb1b0_1.conda": {
+      "build": "pyhd3eb1b0_1",
+      "build_number": 1,
+      "depends": [
+        "favicon",
+        "htbuilder",
+        "lxml",
+        "markdown",
+        "pymdown-extensions",
+        "python >=3.6",
+        "streamlit",
+        "streamlit-extras"
+      ],
+      "legacy_bz2_md5": "bffdd4de0ea3ffabb320c4f6a4172e75",
+      "license": "Apache-2.0",
+      "license_family": "Apache",
+      "md5": "dd74073d979823c4de839690fa65fa6c",
+      "name": "markdownlit",
+      "noarch": "python",
+      "sha256": "400be0832f1fda24fd8ffa437285771243060bf5fbaf84584a7f2b2979117446",
+      "size": 15317,
+      "subdir": "noarch",
+      "timestamp": 1744704080521,
+      "version": "0.0.7"
     },
     "marshmallow-3.12.2-pyhd3eb1b0_0.conda": {
       "build": "pyhd3eb1b0_0",
@@ -34896,59 +34888,78 @@
       "timestamp": 1629455026380,
       "version": "0.4.3"
     },
-    "sphinxcontrib-applehelp-1.0.2-py_0.conda": {
-      "build": "py_0",
-      "build_number": 0,
-      "depends": [
-        "python >=3.5"
-      ],
-      "legacy_bz2_md5": "f3908647cbef04ffedede886bde569ef",
-      "license": "BSD-2-Clause",
-      "license_family": "BSD",
-      "md5": "cc81794aa5469ba725c420c30e4ef052",
-      "name": "sphinxcontrib-applehelp",
-      "noarch": "python",
-      "sha256": "ce7a3cf88f3785ff223bc7995ba38265d3121b1b725ddc71e6f02cbd67928720",
-      "size": 27669,
-      "subdir": "noarch",
-      "timestamp": 1584458680255,
-      "version": "1.0.2"
-    },
-    "sphinxcontrib-devhelp-1.0.2-py_0.conda": {
-      "build": "py_0",
-      "build_number": 0,
-      "depends": [
-        "python >=3.5"
-      ],
-      "legacy_bz2_md5": "452c5637ddb915d61a4aac40d61931ef",
-      "license": "BSD-2-Clause",
-      "license_family": "BSD",
-      "md5": "8f8bdfe835085e546f64399bc8c6fcca",
-      "name": "sphinxcontrib-devhelp",
-      "noarch": "python",
-      "sha256": "9143e1f17984c3d90181b13742d50acd3dc64479c814dd5d7ba964dedf5783fb",
-      "size": 22890,
-      "subdir": "noarch",
-      "timestamp": 1584458745586,
-      "version": "1.0.2"
-    },
-    "sphinxcontrib-htmlhelp-2.0.0-pyhd3eb1b0_0.conda": {
+    "sphinxcontrib-applehelp-2.0.0-pyhd3eb1b0_0.conda": {
       "build": "pyhd3eb1b0_0",
       "build_number": 0,
       "depends": [
-        "python >=3.6"
+        "python >=3.9",
+        "sphinx >=5"
       ],
-      "legacy_bz2_md5": "753d1a927972d2af1136786d398c571b",
+      "legacy_bz2_md5": "b230ea2e25fc6134ced350c8a385f6d7",
       "license": "BSD-2-Clause",
       "license_family": "BSD",
-      "md5": "2af558ca8b56151110c7a3639a1ea348",
+      "md5": "7052c59614638f906b7ff428d6793152",
+      "name": "sphinxcontrib-applehelp",
+      "noarch": "python",
+      "sha256": "c7911bf731ac096e93272e0969b1f2ee2f9daf6b605af2a15aaf94f28101ccc1",
+      "size": 28300,
+      "subdir": "noarch",
+      "timestamp": 1744667890133,
+      "version": "2.0.0"
+    },
+    "sphinxcontrib-applehelp-2.0.0-pyhd3eb1b0_1.conda": {
+      "build": "pyhd3eb1b0_1",
+      "build_number": 1,
+      "depends": [
+        "python >=3.9"
+      ],
+      "legacy_bz2_md5": "16a9fa5dbaa61a063590453384653eb2",
+      "license": "BSD-2-Clause",
+      "license_family": "BSD",
+      "md5": "dc1e9e85935977c16b57ae458f66c35f",
+      "name": "sphinxcontrib-applehelp",
+      "noarch": "python",
+      "sha256": "9a2f4198b0e35eb90134f5d72e5013157b8f3401674c48d07e40b195e0db1503",
+      "size": 27852,
+      "subdir": "noarch",
+      "timestamp": 1744721351849,
+      "version": "2.0.0"
+    },
+    "sphinxcontrib-devhelp-2.0.0-pyhd3eb1b0_0.conda": {
+      "build": "pyhd3eb1b0_0",
+      "build_number": 0,
+      "depends": [
+        "python >=3.9"
+      ],
+      "legacy_bz2_md5": "68cbb2eb68bfd2ceee5df69d530f526f",
+      "license": "BSD-2-Clause",
+      "license_family": "BSD",
+      "md5": "2ac17fc8c58df543e58ba60e5ec84836",
+      "name": "sphinxcontrib-devhelp",
+      "noarch": "python",
+      "sha256": "d14d743e07d4a28f4ce5fec79b257c6b97376f78a349bb4ff3746afc0616f86b",
+      "size": 23111,
+      "subdir": "noarch",
+      "timestamp": 1744728020209,
+      "version": "2.0.0"
+    },
+    "sphinxcontrib-htmlhelp-2.1.0-pyhd3eb1b0_0.conda": {
+      "build": "pyhd3eb1b0_0",
+      "build_number": 0,
+      "depends": [
+        "python >=3.9"
+      ],
+      "legacy_bz2_md5": "2821bf651932fa040f978170c806e8a9",
+      "license": "BSD-2-Clause",
+      "license_family": "BSD",
+      "md5": "2b0ff9b31519311c3efb0418ffe90f53",
       "name": "sphinxcontrib-htmlhelp",
       "noarch": "python",
-      "sha256": "fed2fc45ac491aa059a129e5b3b63090ab2d23327fd2a68b441a7e5c92a809cd",
-      "size": 32536,
+      "sha256": "b06464d51a55a2fed5124fc001ab9f54923dc1d4c4edc4537a224edbe404a017",
+      "size": 34506,
       "subdir": "noarch",
-      "timestamp": 1623945673599,
-      "version": "2.0.0"
+      "timestamp": 1744718391666,
+      "version": "2.1.0"
     },
     "sphinxcontrib-jsmath-1.0.1-py_0.conda": {
       "build": "py_0",
@@ -34968,41 +34979,59 @@
       "timestamp": 1555449311769,
       "version": "1.0.1"
     },
-    "sphinxcontrib-qthelp-1.0.3-py_0.conda": {
-      "build": "py_0",
-      "build_number": 0,
-      "depends": [
-        "python >=3.5"
-      ],
-      "legacy_bz2_md5": "a33b57510df562ae1989100db21d8b14",
-      "license": "BSD-2-Clause",
-      "license_family": "BSD",
-      "md5": "7628b9acffb0123f8037a1f00f2cd5d8",
-      "name": "sphinxcontrib-qthelp",
-      "noarch": "python",
-      "sha256": "df099fa16f15505f8b02e9b8bf3c78644d71b5e28db5a362a209741a0a5e2e47",
-      "size": 25607,
-      "subdir": "noarch",
-      "timestamp": 1584458668071,
-      "version": "1.0.3"
-    },
-    "sphinxcontrib-serializinghtml-1.1.5-pyhd3eb1b0_0.conda": {
+    "sphinxcontrib-qthelp-2.0.0-pyhd3eb1b0_0.conda": {
       "build": "pyhd3eb1b0_0",
       "build_number": 0,
       "depends": [
-        "python >=3.5"
+        "python 3.9.*"
       ],
-      "legacy_bz2_md5": "ac8dcd3879d8a82a3a27c97bb69da6f7",
+      "legacy_bz2_md5": "ed5edce9ea2929c0cb5e649a7198718d",
       "license": "BSD-2-Clause",
       "license_family": "BSD",
-      "md5": "0440b84dfd478f340cf14c2d7c24f6c7",
+      "md5": "c58bdbdcf39ae68ed66ab366450f63ab",
+      "name": "sphinxcontrib-qthelp",
+      "noarch": "python",
+      "sha256": "7e4484c868dbb41fb67d28bf5f212d4d17fa551782a27efb81a713a00ec25512",
+      "size": 25593,
+      "subdir": "noarch",
+      "timestamp": 1744667660004,
+      "version": "2.0.0"
+    },
+    "sphinxcontrib-qthelp-2.0.0-pyhd3eb1b0_1.conda": {
+      "build": "pyhd3eb1b0_1",
+      "build_number": 1,
+      "depends": [
+        "python >=3.9"
+      ],
+      "legacy_bz2_md5": "3b3bc22c4f432e0f47627aa0e19a0bae",
+      "license": "BSD-2-Clause",
+      "license_family": "BSD",
+      "md5": "719c3fac1931de3f9fcfeeb36df461bf",
+      "name": "sphinxcontrib-qthelp",
+      "noarch": "python",
+      "sha256": "e07758cd68fe1c6c6f324e44a8b3d1aa26d2935b56bac3da1d6b391a9d71ab99",
+      "size": 25774,
+      "subdir": "noarch",
+      "timestamp": 1744721072767,
+      "version": "2.0.0"
+    },
+    "sphinxcontrib-serializinghtml-2.0.0-pyhd3eb1b0_0.conda": {
+      "build": "pyhd3eb1b0_0",
+      "build_number": 0,
+      "depends": [
+        "python >=3.9"
+      ],
+      "legacy_bz2_md5": "9e3b4e8afdb46b96539df71511174c88",
+      "license": "BSD-2-Clause",
+      "license_family": "BSD",
+      "md5": "e5856b5b3e38cb97734ebd28fc06525d",
       "name": "sphinxcontrib-serializinghtml",
       "noarch": "python",
-      "sha256": "b0dcd6f5a1707742e189a377821e75c1cc73d7859d887b8924832eeb13bd02d4",
-      "size": 25910,
+      "sha256": "e636d6a5ffb9a97e42f7cfdbfd8c0a44413bba563febd30c0fec2567316a20c8",
+      "size": 27862,
       "subdir": "noarch",
-      "timestamp": 1624451586593,
-      "version": "1.1.5"
+      "timestamp": 1744724118951,
+      "version": "2.0.0"
     },
     "sphinxcontrib-websupport-1.2.4-py_0.conda": {
       "build": "py_0",
@@ -35415,6 +35444,28 @@
       "subdir": "noarch",
       "timestamp": 1615483085562,
       "version": "3.2.1"
+    },
+    "streamlit-faker-0.0.3-pyhd3eb1b0_0.conda": {
+      "build": "pyhd3eb1b0_0",
+      "build_number": 0,
+      "depends": [
+        "faker",
+        "matplotlib-base",
+        "python >=3.9",
+        "streamlit",
+        "streamlit-extras"
+      ],
+      "legacy_bz2_md5": "ab9b46e5ab1e2d6b05ee78d3c8c70995",
+      "license": "Apache-2.0",
+      "license_family": "Apache",
+      "md5": "5f748a22f8823fea0573ce5bf88562ba",
+      "name": "streamlit-faker",
+      "noarch": "python",
+      "sha256": "122b15d9e56d17a8c104249cbefa4a86d3d93eb3da1227f5583267eb539a0e23",
+      "size": 17498,
+      "subdir": "noarch",
+      "timestamp": 1744724817408,
+      "version": "0.0.3"
     },
     "streamz-0.6.3-pyhd3eb1b0_0.conda": {
       "build": "pyhd3eb1b0_0",

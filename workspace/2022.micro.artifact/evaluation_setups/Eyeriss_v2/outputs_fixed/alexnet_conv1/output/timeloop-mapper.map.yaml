@@ -1,0 +1,105 @@
+mapping:
+  - target: reg
+    type: datatype
+    keep:
+      - Inputs
+    bypass:
+      - Weights
+      - Outputs
+    stream:
+      []
+  - target: psum_spad
+    type: datatype
+    keep:
+      - Outputs
+    bypass:
+      - Weights
+      - Inputs
+    stream:
+      []
+  - target: weight_spad
+    type: datatype
+    keep:
+      - Weights
+    bypass:
+      - Inputs
+      - Outputs
+    stream:
+      []
+  - target: iact_spad
+    type: datatype
+    keep:
+      - Inputs
+    bypass:
+      - Weights
+      - Outputs
+    stream:
+      []
+  - target: glb_psum
+    type: datatype
+    keep:
+      - Outputs
+    bypass:
+      - Weights
+      - Inputs
+    stream:
+      []
+  - target: glb_iact
+    type: datatype
+    keep:
+      - Inputs
+    bypass:
+      - Weights
+      - Outputs
+    stream:
+      []
+  - target: BackingStorage
+    type: datatype
+    keep:
+      - Weights
+      - Inputs
+      - Outputs
+    bypass:
+      []
+    stream:
+      - Weights
+      - Inputs
+      - Outputs
+  - target: reg
+    type: temporal
+    factors: C1 M1 R1 S1 N1 P1 Q1
+    permutation: CMRSNPQ
+  - target: psum_spad
+    type: temporal
+    factors: C1 M8 R1 S1 N1 P1 Q1
+    permutation: MCRSNPQ
+  - target: weight_spad
+    type: temporal
+    factors: C1 M1 R1 S1 N2 P1 Q1
+    permutation: NCMRSPQ
+  - target: iact_spad
+    type: temporal
+    factors: C1 M1 R1 S1 N1 P1 Q1
+    permutation: CMRSNPQ
+  - target: glb_psum
+    type: spatial
+    factors: C3 M1 R1 S1 N2 P1 Q2
+    permutation: CNQMRSP
+    split: 3
+  - target: glb_psum
+    type: temporal
+    factors: C1 M3 R1 S11 N1 P7 Q1
+    permutation: MPSCRNQ
+  - target: glb_iact
+    type: temporal
+    factors: C1 M2 R11 S1 N1 P2 Q7
+    permutation: RPMQCSN
+  - target: BackingStorage
+    type: spatial
+    factors: C1 M1 R1 S1 N1 P4 Q2
+    permutation: PQCMRSN
+    split: 2
+  - target: BackingStorage
+    type: temporal
+    factors: C1 M2 R1 S1 N1 P1 Q2
+    permutation: MQCRSNP

@@ -19,27 +19,21 @@ architecture_constraints:
     keep: [Inputs]
   - target: glb_psum
     type: bypass
-    bypass: [Weights, Inputs]
+    bypass: [Inputs, Weights]
     keep: [Outputs]
-  # - target: DummyBuffer
-  #   type: bypass
-  #   bypass: [Inputs, Outputs, Weights]
-  # - target: shared_glb
-  #   type: bypass
-  #   bypass: [Weights]
-  #   keep: [Inputs, Outputs]
-  # - target: DummyBuffer
-  #   type: spatial
-  #   split: 4
-  #   permutation: NPQR SCM
-  #   factors: P=1 Q=1 R=1 S=0 N=1
-  # # only allow fanout of M, Q out from glb
+  # only allow fanout of M, Q out from glb
 
-  # - target: glb
+  # - target: glb_iact
   #   type: spatial
   #   split: 3
   #   permutation: NCPRSQM
   #   factors: C=1 P=1 R=1 S=1 N=1
+  # - target: glb_psum
+  #   type: spatial
+  #   split: 4
+  #   permutation: NCPRSQM
+  #   factors: C=1 P=1 R=1 S=1 N=1
+
 
   # one ofmap position but of different output channels
   - target: psum_spad
@@ -55,10 +49,6 @@ architecture_constraints:
     type: temporal
     permutation: NMCPQRS
     factors: M=1 C=1 P=1 Q=1 R=1 S=1 #N=1
-  # enforce the hardware limit of the bypassing everything
-  # - target: DummyBuffer
-  #   type: temporal
-  #   factors: N=1 M=1 C=1 P=1 Q=1 R=1 S=1 
 
 #
 # The following constraints are not limitations of the hardware architecture and dataflow,
@@ -68,16 +58,16 @@ architecture_constraints:
 mapspace_constraints:
   targets:
     # intuitive optimization to reduce map space size
-    # the factors of these are 1 anyways, so the order does not really matter
-    # - target: DummyBuffer
-    #   type: temporal
-    #   permutation: NMCPQRS
     # intuitive optimization for row stationary
     # -> process a row/col of the output before going to the next one
-#     - target: glb
-#       type: temporal
-#       permutation: QRSC PNM
-#       factors: Q=1 R=1 S=1 P=0
+    # - target: glb_iact
+    #   type: temporal
+    #   permutation: QRSC PNM
+    #   factors: Q=1 R=1 S=1 P=0
+    # - target: glb_psum
+    #   type: temporal
+    #   permutation: QRSC PNM
+    #   factors: Q=1 R=1 S=1 P=0
     # intuitive optimization to reduce map space size
     - target: DRAM
       type: temporal

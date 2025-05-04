@@ -1,9 +1,3 @@
-# eyeriss v1 optimization features
-#  - DRAM compression for Inputs and Weights
-#  - gating on weights scratchpad
-#  - note that the bitmask metadata associated with the ifmap scratchpad is not here because the metadata did not
-#    allow ifmap accesses to be saved, which is what conventionally what metadata will help to achieve, so we model
-#    it as an extra bit in the datawidth instead of as a metadata
 sparse_optimizations:
   targets:
     - name: DRAM
@@ -11,11 +5,15 @@ sparse_optimizations:
         data-spaces:
           - name: Inputs
             ranks:
+              # - format: UOP
+              # - format: UOP
               - format: UOP
                 flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+                # metadata-word-bits: 4
               - format: RLE
                 flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
                 payload-word-bits: 5
+            # rank-application-order: inner-to-outer
           
           - name: Outputs
             ranks:
@@ -24,9 +22,200 @@ sparse_optimizations:
               - format: RLE
                 flattened-rankIDs: [ [P, M, N, Q] ]
                 payload-word-bits: 5
+            # rank-application-order: inner-to-outer
+
+            
     - name: weight_spad
       action-optimization:
         - type: gating
           options:
             - target: Weights
               condition-on: [ Inputs ]
+    - name: iact_spad
+      action-optimization:
+        - type: gating
+          options:
+            - target: Inputs
+              condition-on: [ Weights ]
+    - name: psum_spad
+      action-optimization:
+        - type: skipping
+          options:
+            - target: Outputs
+              condition-on: [ Inputs, Weights ]
+            
+    # - name: glb_iact
+    #   representation-format:
+    #     data-spaces:
+    #       - name: Inputs
+    #         ranks: 
+    #           - format: UOP             
+    #             flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+    #           - format: RLE          
+    #             flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+    #             payload-word-bits: 4
+    #         rank-application-order: inner-to-outer
+
+    # - name: iact_spad
+    #   representation-format:
+    #     data-spaces:
+    #       - name: Inputs
+    #         ranks: 
+    #           - format: UOP             
+    #             flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+    #           - format: RLE          
+    #             flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+    #             metadata-word-bits: 4
+    #         rank-application-order: inner-to-outer
+
+    # - name: weight_spad
+    #   representation-format:
+    #     data-spaces:
+    #       - name: Weights
+    #         ranks: 
+    #           - format: UOP             
+    #             flattened-rankIDs: [ [ C, R ] ] 
+    #           - format: RLE          
+    #             flattened-rankIDs: [ [ M ] ] 
+    #             metadata-word-bits: 8
+    #         rank-application-order: inner-to-outer
+      # action-optimization:
+      #   - type: skipping
+      #     options:
+      #       - target: Weights
+      #         condition-on: [ Inputs ]
+
+    # - name: psum_spad
+    #   action-optimization:
+    #     - type: skipping
+    #       options:
+    #         - target: Outputs
+    #           condition-on: [ Inputs, Weights ]
+              
+    # - name: reg
+    #   representation-format:
+    #     data-spaces:
+    #       - name: Inputs
+    #         ranks: 
+    #           - format: RLE          
+    #             metadata-word-bits: 4
+    #         rank-application-order: inner-to-outer
+              
+    # - name: MAC
+    #   compute-optimization:
+    #     - type: skipping
+          
+
+# sparse_optimizations:
+#   targets:
+#     - name: DRAM
+#       representation-format:
+#         data-spaces:
+#           - name: Inputs
+#             ranks:
+#               - format: UOP
+#               - format: UOP
+              
+#               - format: UOP
+#               - format: UOP
+              
+#               - format: UOP
+#                 # flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+#                 metadata-word-bits: 4
+#               - format: RLE
+#                 # flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+#                 metadata-word-bits: 4
+#             rank-application-order: inner-to-outer
+          
+#           - name: Outputs
+#             ranks:
+#               - format: UOP
+#                 # flattened-rankIDs: [ [P, M, N, Q] ]
+#               - format: RLE
+#                 # flattened-rankIDs: [ [P, M, N, Q] ]
+#                 metadata-word-bits: 4
+#             rank-application-order: inner-to-outer
+                
+#           - name: Weights
+#             ranks:
+#               - format: UOP
+#               - format: UOP
+              
+#               - format: UOP
+#                 # flattened-rankIDs: [ [C, R] ]
+#               - format: RLE
+#                 # flattened-rankIDs: [ [M] ]
+#                 metadata-word-bits: 8
+#             rank-application-order: inner-to-outer
+
+#     - name: glb_iact
+#       representation-format:
+#         data-spaces:
+#           - name: Inputs
+#             ranks: 
+#               - format: UOP
+#               - format: UOP
+              
+#               - format: UOP             
+#                 # flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+#               - format: RLE          
+#                 # flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+#                 metadata-word-bits: 4
+#             rank-application-order: inner-to-outer
+
+#     - name: iact_spad
+#       representation-format:
+#         data-spaces:
+#           - name: Inputs
+#             ranks: 
+#               - format: UOP             
+#                 # flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+#               - format: RLE          
+#                 # flattened-rankIDs: [ [R, S, P, C, M, N, Q] ]
+#                 metadata-word-bits: 4
+#             rank-application-order: inner-to-outer
+
+#     - name: weight_spad
+#       representation-format:
+#         data-spaces:
+#           - name: Weights
+#             ranks: 
+#               - format: UOP             
+#                 # flattened-rankIDs: [ [ C, R ] ] 
+#               - format: RLE          
+#                 # flattened-rankIDs: [ [ M ] ] 
+#                 metadata-word-bits: 8
+#             rank-application-order: inner-to-outer
+#       action-optimization:
+#         - type: skipping
+#           options:
+#             - target: Weights
+#               condition-on: [ Inputs ]
+
+#     - name: glb_psum
+#       action-optimization:
+#         - type: skipping
+#           options:
+#             - target: Outputs
+#               condition-on: [ Inputs, Weights ]
+
+#     - name: psum_spad
+#       action-optimization:
+#         - type: skipping
+#           options:
+#             - target: Outputs
+#               condition-on: [ Inputs, Weights ]
+              
+#     - name: reg
+#       representation-format:
+#         data-spaces:
+#           - name: Inputs
+#             ranks: 
+#               - format: RLE          
+#                 metadata-word-bits: 4
+#             rank-application-order: inner-to-outer
+              
+#     - name: MAC
+#       compute-optimization:
+#         - type: skipping
+          

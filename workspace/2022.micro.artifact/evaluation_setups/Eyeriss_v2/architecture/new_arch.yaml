@@ -1,148 +1,19 @@
-# architecture:
-#   version: 0.4
-#   nodes:
-#   - !Container
-#     name: eyeriss_v2
-#     attributes:
-#       # Top-level attributes inherited by all components unless overridden
-#       technology: "45nm"
-#       # global_cycle_seconds: 1e-9
-#       # datawidth: 16
-
-#   - !Component
-#     name: BackingStorage
-#     class: DRAM  # a storage with inifinite capacity, so DRAM in timeloop repr
-#     subclass: DummyStorage
-#     attributes:
-#       width: 64
-#       block_size: 8
-#       datawidth: 8
-#       metadata_storage_width: 8
-#   - !Component
-#     name: DRAM
-#     class: DRAM
-#     subclass: DRAM_metadata
-#     attributes:
-#       width: 64
-#       block_size: 4
-#       datawidth: 16
-#       metadata_datawidth: 5
-#       metadata_storage_width: 5 
-#   - !Container
-#     name: glb_pe_cluster
-#     spatial: {meshX: 8, meshY: 2}
-
-#   - !Component
-#     name: glb
-#     class: smartbuffer_metadata
-#     attributes:
-#       data_storage_depth: 12800 
-#       data_storage_width: 64
-#       block_size: 4
-#       n_banks: 7
-#       read_bandwidth: 16
-#       write_bandwidth: 16
-#       metadata_storage_depth: 0
-#       metadata_storage_width: 0
-#       metadata_block_size: 1
-#       metadata_datawidth: 0
-#       metadata_counter_width: 9
-#       decompression_supported: true  # from DRAM decompression
-#       compression_supported: true
-#   - !Container
-#     name: PE
-#     spatial: {meshX: 3, meshY: 4}
-
-#   - !Component
-#     name: iact_spad
-#     class: storage
-#     subclass: SRAM_MD 
-#     attributes:
-#       data_storage_depth: 16
-#       data_storage_width: 8
-#       metadata_storage_depth: 25  # 25  # 9 addr entries, 16 run entries   
-#       metadata_storage_width: 4
-#       datawidth: 8
-#       block_size: 1
-
-#   - !Component
-#     name: weight_spad
-#     class: storage
-#     subclass: SRAM_MD
-#     attributes:
-#       data_storage_depth: 192      
-#       data_storage_width: 8
-#       metadata_storage_depth: 128  # 16 7b addr entries, 192 4b run entries
-#       metadata_storage_width: 8
-#       datawidth: 8
-#       block_size: 1
-
-#   - !Component
-#     name: psum_spad
-#     class: storage
-#     subclass: SRAM
-#     attributes:
-#       depth: 32
-#       width: 20
-#       datawidth: 20
-#       block_size: 1
-
-#   - !Component
-#     name: reg
-#     class: storage
-#     subclass: SRAM_MD # we use sram for regfile, sram, and reg, the plug-in uses the right energy number
-#     attributes:
-#       data_storage_depth: 1
-#       data_storage_width: 8
-#       metadata_storage_width: 4
-#       metadata_storage_depth: 1
-#       datawidth: 8
-
-#   - !Component
-#     name: MAC
-#     class: compute
-#     subclass: Imac
-#     attributes:
-#       datawidth: 8
-
-
 architecture:
   version: 0.3
-  # subtree:
-  #   - name: system
-  #     local:
-  #       - name: DRAM
-  #         class: DRAM
-  #         subclass: DRAM_metadata
-  #         attributes:
-  #           width: 64
-  #           block_size: 4
-  #           datawidth: 16
-  #           metadata_datawidth: 5
-  #           metadata_storage_width: 5 
-        
   subtree:
     - name: eyeriss_v2
       attributes:
         technology: 45nm
       local:
-        - name: BackingStorage
+        - name: DRAM
           class: DRAM  # a storage with inifinite capacity, so DRAM in timeloop repr
           subclass: DummyStorage
           attributes:
             width: 64
             block_size: 8
             datawidth: 8
-            metadata_storage_width: 8
-        - name: DRAM
-          class: DRAM
-          subclass: DRAM_metadata
-          attributes:
-            width: 64
-            block_size: 4
-            datawidth: 16
             metadata_datawidth: 5
-            metadata_storage_width: 5 
+            metadata_storage_width: 5
 
         
       subtree:
@@ -150,28 +21,13 @@ architecture:
           attributes:
             meshX: 8
           local:
-            # - name: glb
-            #   class: smartbuffer_metadata
-            #   attributes:
-            #     data_storage_depth: 1536
-            #     data_storage_width: 64
-            #     block_size: 4
-            #     n_banks: 7
-            #     read_bandwidth: 512
-            #     write_bandwidth: 512
-            #     metadata_storage_depth: 0
-            #     metadata_storage_width: 0
-            #     metadata_block_size: 1
-            #     metadata_datawidth: 0
-            #     metadata_counter_width: 9
-                #decompression_supported: true  # from DRAM decompression
-                #compression_supported: true    # to DRAM compression
-                #meshX: 8
             - name: glb_iact
               class: smartbuffer_metadata
               attributes:
-                data_storage_depth: 576
+                # data_storage_depth: 7680
+                data_storage_depth: 12800
                 data_storage_width: 64
+#                 data_storage_width: 128
                 block_size: 4
                 n_banks: 3
                 read_bandwidth: 192
@@ -181,11 +37,15 @@ architecture:
                 metadata_block_size: 1
                 metadata_datawidth: 0
                 metadata_counter_width: 9
+                decompression_supported: true  # from DRAM decompression
+                compression_supported: true    # to DRAM compression
             - name: glb_psum
               class: smartbuffer_metadata
               attributes:
-                data_storage_depth: 960
+#                 data_storage_depth: 7680
+                data_storage_depth: 12800
                 data_storage_width: 64
+#                 data_storage_width: 128
                 block_size: 4
                 n_banks: 4
                 read_bandwidth: 256
@@ -195,6 +55,8 @@ architecture:
                 metadata_block_size: 1
                 metadata_datawidth: 0
                 metadata_counter_width: 9
+                decompression_supported: true  # from DRAM decompression
+                compression_supported: true    # to DRAM compression
           subtree:
             - name: PE[0..11]
               attributes:
@@ -209,17 +71,21 @@ architecture:
                     metadata_storage_depth: 25  # 25  # 9 addr entries, 16 run entries   
                     metadata_storage_width: 4
                     datawidth: 8
+#                     datawidth: 1
                     block_size: 1
                     #meshX: 3
+                    # decompression_supported: true  # from DRAM decompression
+                    # compression_supported: true    # to DRAM compression
                 - name: weight_spad
                   class: storage
                   subclass: SRAM_MD
                   attributes:
-                    data_storage_depth: 96      
+                    data_storage_depth: 96
                     data_storage_width: 24
                     metadata_storage_depth: 128  # 16 7b addr entries, 192 4b run entries
                     metadata_storage_width: 8
                     datawidth: 8
+#                     datawidth: 1
                     block_size: 1
                     #meshX: 3
                 - name: psum_spad
@@ -229,8 +95,8 @@ architecture:
                     depth: 32
                     width: 20
                     datawidth: 20
+#                     datawidth: 2
                     block_size: 1
-                    #meshX: 3
                 - name: reg
                   class: storage
                   subclass: SRAM_MD # we use sram for regfile, sram, and reg, the plug-in uses the right energy number
@@ -240,10 +106,130 @@ architecture:
                     metadata_storage_width: 4
                     metadata_storage_depth: 1
                     datawidth: 8
-                    #meshX: 3
+#                     datawidth: 1
                 - name: MAC
                   class: compute
                   subclass: Imac
                   attributes:
                     datawidth: 8
-                    #meshX: 3
+#                     datawidth: 1
+
+
+
+# architecture:
+#   version: 0.3
+#   subtree:
+#     - name: eyeriss_v2
+#       attributes:
+#         technology: 45nm
+#       local:
+#         - name: BackingStorage
+#           class: DRAM  # a storage with inifinite capacity, so DRAM in timeloop repr
+#           subclass: DummyStorage
+#           attributes:
+#             width: 64
+#             block_size: 8
+#             datawidth: 8
+#             metadata_datawidth: 5
+#             metadata_storage_width: 5
+# #         - name: DRAM
+# #           class: DRAM
+# #           subclass: DRAM_metadata
+# #           attributes:
+# #             width: 64
+# #             block_size: 8
+# #             datawidth: 8
+# #             metadata_datawidth: 5
+# #             metadata_storage_width: 5 
+
+        
+#       subtree:
+#         - name: glb_pe_cluster[0..15]
+#           attributes:
+#             meshX: 8
+#           local:
+#             - name: glb_iact
+#               class: smartbuffer_metadata
+#               attributes:
+#                 data_storage_depth: 1152
+# #                 data_storage_width: 64
+#                 data_storage_width: 128
+#                 block_size: 4
+#                 n_banks: 3
+#                 read_bandwidth: 192
+#                 write_bandwidth: 192
+#                 metadata_storage_depth: 0
+#                 metadata_storage_width: 0
+#                 metadata_block_size: 1
+#                 metadata_datawidth: 0
+#                 metadata_counter_width: 9
+#             - name: glb_psum
+#               class: smartbuffer_metadata
+#               attributes:
+#                 data_storage_depth: 1920
+# #                 data_storage_width: 64
+#                 data_storage_width: 128
+#                 block_size: 4
+#                 n_banks: 4
+#                 read_bandwidth: 256
+#                 write_bandwidth: 256
+#                 metadata_storage_depth: 0
+#                 metadata_storage_width: 0
+#                 metadata_block_size: 1
+#                 metadata_datawidth: 0
+#                 metadata_counter_width: 9
+#           subtree:
+#             - name: PE[0..11]
+#               attributes:
+#                 meshX: 3
+#               local:
+#                 - name: iact_spad
+#                   class: storage
+#                   subclass: SRAM_MD 
+#                   attributes:
+#                     data_storage_depth: 12
+#                     data_storage_width: 16
+#                     metadata_storage_depth: 25  # 25  # 9 addr entries, 16 run entries   
+#                     metadata_storage_width: 4
+#                     datawidth: 8
+# #                     datawidth: 1
+#                     block_size: 1
+#                     #meshX: 3
+#                 - name: weight_spad
+#                   class: storage
+#                   subclass: SRAM_MD
+#                   attributes:
+#                     data_storage_depth: 96
+#                     data_storage_width: 24
+#                     metadata_storage_depth: 128  # 16 7b addr entries, 192 4b run entries
+#                     metadata_storage_width: 8
+#                     datawidth: 8
+# #                     datawidth: 1
+#                     block_size: 1
+#                     #meshX: 3
+#                 - name: psum_spad
+#                   class: storage
+#                   subclass: SRAM
+#                   attributes:
+#                     depth: 32
+#                     width: 20
+#                     datawidth: 20
+# #                     datawidth: 2
+#                     block_size: 1
+#                 - name: reg
+#                   class: storage
+#                   subclass: SRAM_MD # we use sram for regfile, sram, and reg, the plug-in uses the right energy number
+#                   attributes:
+#                     data_storage_depth: 1
+#                     data_storage_width: 8
+#                     metadata_storage_width: 4
+#                     metadata_storage_depth: 1
+#                     datawidth: 8
+# #                     datawidth: 1
+#                 - name: MAC
+#                   class: compute
+#                   subclass: Imac
+#                   attributes:
+#                     datawidth: 8
+# #                     datawidth: 1
+

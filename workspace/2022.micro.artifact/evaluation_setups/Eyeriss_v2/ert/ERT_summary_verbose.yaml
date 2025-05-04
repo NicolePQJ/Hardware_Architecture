@@ -1,0 +1,774 @@
+ERT_summary:
+  version: 0.3
+  table_summary:
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].psum_spad
+    actions:
+    - name: read
+      average_energy: 0.27263
+      max_energy: 0.54526
+      min_energy: 1.0e-05
+    - name: write
+      average_energy: 0.35904
+      max_energy: 0.71807
+      min_energy: 1.0e-05
+    - name: idle
+      energy: 1.0e-05
+    primitive_estimation(s):
+    - eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].psum_spad:
+        estimator: Cacti
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].iact_spad
+    actions:
+    - name: write
+      energy: 0.18752
+    - name: read
+      energy: 0.18752
+    - name: gated_write
+      energy: 0.0061
+    - name: gated_read
+      energy: 0.0061
+    - name: metadata_read
+      energy: 0.14934
+    - name: metadata_write
+      energy: 0.14934
+    - name: gated_metadata_read
+      energy: 0.00195
+    - name: gated_metadata_write
+      energy: 0.00195
+    primitive_estimation(s):
+    - action_name: write
+      arguments: null
+      energy: 0.18752
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: write
+        arguments: null
+        energy: 0.18752
+        action_share: 1
+        interpreted_energy: 0.18752
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: read
+      arguments: null
+      energy: 0.18752
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: read
+        arguments: null
+        energy: 0.18752
+        action_share: 1
+        interpreted_energy: 0.18752
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: gated_write
+      arguments: null
+      energy: 0.0061
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: idle
+        arguments: null
+        energy: 0.0061
+        action_share: 1
+        interpreted_energy: 0.0061
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: gated_read
+      arguments: null
+      energy: 0.0061
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: idle
+        arguments: null
+        energy: 0.0061
+        action_share: 1
+        interpreted_energy: 0.0061
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: metadata_read
+      arguments: null
+      energy: 0.14934
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: read
+        arguments: null
+        energy: 0.14934
+        action_share: 1
+        interpreted_energy: 0.14934
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: metadata_write
+      arguments: null
+      energy: 0.14934
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: write
+        arguments: null
+        energy: 0.14934
+        action_share: 1
+        interpreted_energy: 0.14934
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: gated_metadata_read
+      arguments: null
+      energy: 0.00195
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: idle
+        arguments: null
+        energy: 0.00195
+        action_share: 1
+        interpreted_energy: 0.00195
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: gated_metadata_write
+      arguments: null
+      energy: 0.00195
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: idle
+        arguments: null
+        energy: 0.00195
+        action_share: 1
+        interpreted_energy: 0.00195
+        percentage: 100.0%
+        estimator: Aladdin_table
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].weight_spad
+    actions:
+    - name: write
+      energy: 1.28375
+    - name: read
+      energy: 0.62333
+    - name: gated_write
+      energy: 1.0e-05
+    - name: gated_read
+      energy: 1.0e-05
+    - name: metadata_read
+      energy: 0.47678
+    - name: metadata_write
+      energy: 0.51919
+    - name: gated_metadata_read
+      energy: 1.0e-05
+    - name: gated_metadata_write
+      energy: 1.0e-05
+    primitive_estimation(s):
+    - action_name: write
+      arguments: null
+      energy: 1.28375
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: write
+        arguments: null
+        energy: 1.28375
+        action_share: 1
+        interpreted_energy: 1.28375
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: read
+      arguments: null
+      energy: 0.62333
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: read
+        arguments: null
+        energy: 0.62333
+        action_share: 1
+        interpreted_energy: 0.62333
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: gated_write
+      arguments: null
+      energy: 1.0e-05
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: idle
+        arguments: null
+        energy: 1.0e-05
+        action_share: 1
+        interpreted_energy: 1.0e-05
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: gated_read
+      arguments: null
+      energy: 1.0e-05
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: idle
+        arguments: null
+        energy: 1.0e-05
+        action_share: 1
+        interpreted_energy: 1.0e-05
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: metadata_read
+      arguments: null
+      energy: 0.47678
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: read
+        arguments: null
+        energy: 0.47678
+        action_share: 1
+        interpreted_energy: 0.47678
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: metadata_write
+      arguments: null
+      energy: 0.51919
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: write
+        arguments: null
+        energy: 0.51919
+        action_share: 1
+        interpreted_energy: 0.51919
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: gated_metadata_read
+      arguments: null
+      energy: 1.0e-05
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: idle
+        arguments: null
+        energy: 1.0e-05
+        action_share: 1
+        interpreted_energy: 1.0e-05
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: gated_metadata_write
+      arguments: null
+      energy: 1.0e-05
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: idle
+        arguments: null
+        energy: 1.0e-05
+        action_share: 1
+        interpreted_energy: 1.0e-05
+        percentage: 100.0%
+        estimator: Cacti
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].reg
+    actions:
+    - name: write
+      energy: 0.072
+    - name: read
+      energy: 0.072
+    - name: gated_write
+      energy: 0.00296
+    - name: gated_read
+      energy: 0.00296
+    - name: metadata_read
+      energy: 0
+    - name: metadata_write
+      energy: 0
+    - name: gated_metadata_read
+      energy: 0
+    - name: gated_metadata_write
+      energy: 0
+    primitive_estimation(s):
+    - action_name: write
+      arguments: null
+      energy: 0.072
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: write
+        arguments: null
+        energy: 0.072
+        action_share: 1
+        interpreted_energy: 0.072
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: read
+      arguments: null
+      energy: 0.072
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: read
+        arguments: null
+        energy: 0.072
+        action_share: 1
+        interpreted_energy: 0.072
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: gated_write
+      arguments: null
+      energy: 0.00296
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: idle
+        arguments: null
+        energy: 0.00296
+        action_share: 1
+        interpreted_energy: 0.00296
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: gated_read
+      arguments: null
+      energy: 0.00296
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: idle
+        arguments: null
+        energy: 0.00296
+        action_share: 1
+        interpreted_energy: 0.00296
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: metadata_read
+      arguments: null
+      energy: 0
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: read
+        arguments: null
+        energy: 0
+        action_share: 1
+        interpreted_energy: 0
+        percentage: 0%
+        estimator: Cacti
+    - action_name: metadata_write
+      arguments: null
+      energy: 0
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: write
+        arguments: null
+        energy: 0
+        action_share: 1
+        interpreted_energy: 0
+        percentage: 0%
+        estimator: Cacti
+    - action_name: gated_metadata_read
+      arguments: null
+      energy: 0
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: idle
+        arguments: null
+        energy: 0
+        action_share: 1
+        interpreted_energy: 0
+        percentage: 0%
+        estimator: Cacti
+    - action_name: gated_metadata_write
+      arguments: null
+      energy: 0
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: idle
+        arguments: null
+        energy: 0
+        action_share: 1
+        interpreted_energy: 0
+        percentage: 0%
+        estimator: Cacti
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].MAC
+    actions:
+    - name: mac_random
+      energy: 0.5608
+    - name: mac_gated
+      energy: 0.01798
+    - name: mac_skipped
+      energy: 0.01798
+    primitive_estimation(s):
+    - action_name: mac_random
+      arguments: null
+      energy: 0.5608
+      subaction_estimations:
+      - subcomponent_name: multiplier
+        subaction_name: multiply_random
+        arguments: null
+        energy: 0.53938
+        action_share: 1
+        interpreted_energy: 0.53938
+        percentage: 96.18%
+        estimator: Aladdin_table
+      - subcomponent_name: adder
+        subaction_name: add
+        arguments: null
+        energy: 0.02142
+        action_share: 1
+        interpreted_energy: 0.02142
+        percentage: 3.82%
+        estimator: Aladdin_table
+    - action_name: mac_gated
+      arguments: null
+      energy: 0.01798
+      subaction_estimations:
+      - subcomponent_name: multiplier
+        subaction_name: idle
+        arguments: null
+        energy: 0.015
+        action_share: 1
+        interpreted_energy: 0.015
+        percentage: 83.43%
+        estimator: Aladdin_table
+      - subcomponent_name: adder
+        subaction_name: idle
+        arguments: null
+        energy: 0.00298
+        action_share: 1
+        interpreted_energy: 0.00298
+        percentage: 16.57%
+        estimator: Aladdin_table
+    - action_name: mac_skipped
+      arguments: null
+      energy: 0.01798
+      subaction_estimations:
+      - subcomponent_name: multiplier
+        subaction_name: idle
+        arguments: null
+        energy: 0.015
+        action_share: 1
+        interpreted_energy: 0.015
+        percentage: 83.43%
+        estimator: Aladdin_table
+      - subcomponent_name: adder
+        subaction_name: idle
+        arguments: null
+        energy: 0.00298
+        action_share: 1
+        interpreted_energy: 0.00298
+        percentage: 16.57%
+        estimator: Aladdin_table
+  - name: eyeriss_v2.glb_pe_cluster[0..15].glb_iact
+    actions:
+    - name: write
+      energy: 10.87683
+    - name: read
+      energy: 8.97027
+    - name: gated_write
+      energy: 0.00016
+    - name: gated_read
+      energy: 0.00016
+    - name: address_generation
+      energy: 0.01702
+    - name: metadata_read
+      energy: 0
+    - name: metadata_write
+      energy: 0
+    - name: gated_metadata_read
+      energy: 0
+    - name: gated_metadata_write
+      energy: 0
+    - name: decompression_count
+      energy: 0.0241
+    - name: compression_count
+      energy: 0.0241
+    - name: idle
+      energy: 0.00016
+    primitive_estimation(s):
+    - action_name: write
+      arguments: null
+      energy: 10.87683
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: write
+        arguments: null
+        energy: 10.87683
+        action_share: 1
+        interpreted_energy: 10.87683
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: read
+      arguments: null
+      energy: 8.97027
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: read
+        arguments: null
+        energy: 8.97027
+        action_share: 1
+        interpreted_energy: 8.97027
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: gated_write
+      arguments: null
+      energy: 0.00016
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: idle
+        arguments: null
+        energy: 0.00016
+        action_share: 1
+        interpreted_energy: 0.00016
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: gated_read
+      arguments: null
+      energy: 0.00016
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: idle
+        arguments: null
+        energy: 0.00016
+        action_share: 1
+        interpreted_energy: 0.00016
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: address_generation
+      arguments: null
+      energy: 0.01702
+      subaction_estimations:
+      - subcomponent_name: address_generators[0]
+        subaction_name: add
+        arguments: null
+        energy: 0.01702
+        action_share: 1
+        interpreted_energy: 0.01702
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: metadata_read
+      arguments: null
+      energy: 0
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: read
+        arguments: null
+        energy: 0
+        action_share: 1
+        interpreted_energy: 0
+        percentage: 0%
+        estimator: Cacti
+    - action_name: metadata_write
+      arguments: null
+      energy: 0
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: write
+        arguments: null
+        energy: 0
+        action_share: 1
+        interpreted_energy: 0
+        percentage: 0%
+        estimator: Cacti
+    - action_name: gated_metadata_read
+      arguments: null
+      energy: 0
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: idle
+        arguments: null
+        energy: 0
+        action_share: 1
+        interpreted_energy: 0
+        percentage: 0%
+        estimator: Cacti
+    - action_name: gated_metadata_write
+      arguments: null
+      energy: 0
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: idle
+        arguments: null
+        energy: 0
+        action_share: 1
+        interpreted_energy: 0
+        percentage: 0%
+        estimator: Cacti
+    - action_name: decompression_count
+      arguments: null
+      energy: 0.0241
+      subaction_estimations:
+      - subcomponent_name: metadata_counters[1]
+        subaction_name: add
+        arguments: null
+        energy: 0.0241
+        action_share: 1
+        interpreted_energy: 0.0241
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: compression_count
+      arguments: null
+      energy: 0.0241
+      subaction_estimations:
+      - subcomponent_name: metadata_counters[0]
+        subaction_name: add
+        arguments: null
+        energy: 0.0241
+        action_share: 1
+        interpreted_energy: 0.0241
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: idle
+      arguments: null
+      energy: 0.00016
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: idle
+        arguments: null
+        energy: 0.00016
+        action_share: 1
+        interpreted_energy: 0.00016
+        percentage: 100.0%
+        estimator: Cacti
+  - name: eyeriss_v2.glb_pe_cluster[0..15].glb_psum
+    actions:
+    - name: write
+      energy: 12.82088
+    - name: read
+      energy: 11.42077
+    - name: gated_write
+      energy: 0.00026
+    - name: gated_read
+      energy: 0.00026
+    - name: address_generation
+      energy: 0.01839
+    - name: metadata_read
+      energy: 0
+    - name: metadata_write
+      energy: 0
+    - name: gated_metadata_read
+      energy: 0
+    - name: gated_metadata_write
+      energy: 0
+    - name: decompression_count
+      energy: 0.0241
+    - name: compression_count
+      energy: 0.0241
+    - name: idle
+      energy: 0.00026
+    primitive_estimation(s):
+    - action_name: write
+      arguments: null
+      energy: 12.82088
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: write
+        arguments: null
+        energy: 12.82088
+        action_share: 1
+        interpreted_energy: 12.82088
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: read
+      arguments: null
+      energy: 11.42077
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: read
+        arguments: null
+        energy: 11.42077
+        action_share: 1
+        interpreted_energy: 11.42077
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: gated_write
+      arguments: null
+      energy: 0.00026
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: idle
+        arguments: null
+        energy: 0.00026
+        action_share: 1
+        interpreted_energy: 0.00026
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: gated_read
+      arguments: null
+      energy: 0.00026
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: idle
+        arguments: null
+        energy: 0.00026
+        action_share: 1
+        interpreted_energy: 0.00026
+        percentage: 100.0%
+        estimator: Cacti
+    - action_name: address_generation
+      arguments: null
+      energy: 0.01839
+      subaction_estimations:
+      - subcomponent_name: address_generators[0]
+        subaction_name: add
+        arguments: null
+        energy: 0.01839
+        action_share: 1
+        interpreted_energy: 0.01839
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: metadata_read
+      arguments: null
+      energy: 0
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: read
+        arguments: null
+        energy: 0
+        action_share: 1
+        interpreted_energy: 0
+        percentage: 0%
+        estimator: Cacti
+    - action_name: metadata_write
+      arguments: null
+      energy: 0
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: write
+        arguments: null
+        energy: 0
+        action_share: 1
+        interpreted_energy: 0
+        percentage: 0%
+        estimator: Cacti
+    - action_name: gated_metadata_read
+      arguments: null
+      energy: 0
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: idle
+        arguments: null
+        energy: 0
+        action_share: 1
+        interpreted_energy: 0
+        percentage: 0%
+        estimator: Cacti
+    - action_name: gated_metadata_write
+      arguments: null
+      energy: 0
+      subaction_estimations:
+      - subcomponent_name: metadata_storage
+        subaction_name: idle
+        arguments: null
+        energy: 0
+        action_share: 1
+        interpreted_energy: 0
+        percentage: 0%
+        estimator: Cacti
+    - action_name: decompression_count
+      arguments: null
+      energy: 0.0241
+      subaction_estimations:
+      - subcomponent_name: metadata_counters[1]
+        subaction_name: add
+        arguments: null
+        energy: 0.0241
+        action_share: 1
+        interpreted_energy: 0.0241
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: compression_count
+      arguments: null
+      energy: 0.0241
+      subaction_estimations:
+      - subcomponent_name: metadata_counters[0]
+        subaction_name: add
+        arguments: null
+        energy: 0.0241
+        action_share: 1
+        interpreted_energy: 0.0241
+        percentage: 100.0%
+        estimator: Aladdin_table
+    - action_name: idle
+      arguments: null
+      energy: 0.00026
+      subaction_estimations:
+      - subcomponent_name: storage
+        subaction_name: idle
+        arguments: null
+        energy: 0.00026
+        action_share: 1
+        interpreted_energy: 0.00026
+        percentage: 100.0%
+        estimator: Cacti

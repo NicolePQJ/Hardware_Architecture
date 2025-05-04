@@ -49,7 +49,7 @@ def run_timeloop(job_name, input_dict, ert_path, art_path, base_dir):
 
         p = subprocess.Popen(subprocess_cmd)
         try:
-            p.communicate(timeout=1200) # wait for at most 20 min
+            p.communicate(timeout=240) # wait for at most 20 min
         except KeyboardInterrupt:
            p = 0
            while p <= 60 and not os.path.exists(os.path.join(output_dir, "timeloop-mapper.map+stats.xml")):

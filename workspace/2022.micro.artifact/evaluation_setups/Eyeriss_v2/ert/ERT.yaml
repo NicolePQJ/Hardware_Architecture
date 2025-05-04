@@ -1,0 +1,213 @@
+ERT:
+  version: 0.3
+  tables:
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].psum_spad
+    actions:
+    - name: read
+      arguments:
+        address_delta: 0
+        data_delta: 0
+      energy: 1.0e-05
+    - name: read
+      arguments:
+        address_delta: 0
+        data_delta: 1
+      energy: 0.38169
+    - name: read
+      arguments:
+        address_delta: 1
+        data_delta: 0
+      energy: 0.16358
+    - name: read
+      arguments:
+        address_delta: 1
+        data_delta: 1
+      energy: 0.54526
+    - name: write
+      arguments:
+        address_delta: 0
+        data_delta: 0
+      energy: 1.0e-05
+    - name: write
+      arguments:
+        address_delta: 0
+        data_delta: 1
+      energy: 0.50265
+    - name: write
+      arguments:
+        address_delta: 1
+        data_delta: 0
+      energy: 0.21542
+    - name: write
+      arguments:
+        address_delta: 1
+        data_delta: 1
+      energy: 0.71807
+    - name: idle
+      arguments: null
+      energy: 1.0e-05
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].iact_spad
+    actions:
+    - name: write
+      arguments: null
+      energy: 0.18752
+    - name: read
+      arguments: null
+      energy: 0.18752
+    - name: gated_write
+      arguments: null
+      energy: 0.0061
+    - name: gated_read
+      arguments: null
+      energy: 0.0061
+    - name: metadata_read
+      arguments: null
+      energy: 0.14934
+    - name: metadata_write
+      arguments: null
+      energy: 0.14934
+    - name: gated_metadata_read
+      arguments: null
+      energy: 0.00195
+    - name: gated_metadata_write
+      arguments: null
+      energy: 0.00195
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].weight_spad
+    actions:
+    - name: write
+      arguments: null
+      energy: 1.28375
+    - name: read
+      arguments: null
+      energy: 0.62333
+    - name: gated_write
+      arguments: null
+      energy: 1.0e-05
+    - name: gated_read
+      arguments: null
+      energy: 1.0e-05
+    - name: metadata_read
+      arguments: null
+      energy: 0.47678
+    - name: metadata_write
+      arguments: null
+      energy: 0.51919
+    - name: gated_metadata_read
+      arguments: null
+      energy: 1.0e-05
+    - name: gated_metadata_write
+      arguments: null
+      energy: 1.0e-05
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].reg
+    actions:
+    - name: write
+      arguments: null
+      energy: 0.072
+    - name: read
+      arguments: null
+      energy: 0.072
+    - name: gated_write
+      arguments: null
+      energy: 0.00296
+    - name: gated_read
+      arguments: null
+      energy: 0.00296
+    - name: metadata_read
+      arguments: null
+      energy: 0
+    - name: metadata_write
+      arguments: null
+      energy: 0
+    - name: gated_metadata_read
+      arguments: null
+      energy: 0
+    - name: gated_metadata_write
+      arguments: null
+      energy: 0
+  - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].MAC
+    actions:
+    - name: mac_random
+      arguments: null
+      energy: 0.5608
+    - name: mac_gated
+      arguments: null
+      energy: 0.01798
+    - name: mac_skipped
+      arguments: null
+      energy: 0.01798
+  - name: eyeriss_v2.glb_pe_cluster[0..15].glb_iact
+    actions:
+    - name: write
+      arguments: null
+      energy: 10.87683
+    - name: read
+      arguments: null
+      energy: 8.97027
+    - name: gated_write
+      arguments: null
+      energy: 0.00016
+    - name: gated_read
+      arguments: null
+      energy: 0.00016
+    - name: address_generation
+      arguments: null
+      energy: 0.01702
+    - name: metadata_read
+      arguments: null
+      energy: 0
+    - name: metadata_write
+      arguments: null
+      energy: 0
+    - name: gated_metadata_read
+      arguments: null
+      energy: 0
+    - name: gated_metadata_write
+      arguments: null
+      energy: 0
+    - name: decompression_count
+      arguments: null
+      energy: 0.0241
+    - name: compression_count
+      arguments: null
+      energy: 0.0241
+    - name: idle
+      arguments: null
+      energy: 0.00016
+  - name: eyeriss_v2.glb_pe_cluster[0..15].glb_psum
+    actions:
+    - name: write
+      arguments: null
+      energy: 12.82088
+    - name: read
+      arguments: null
+      energy: 11.42077
+    - name: gated_write
+      arguments: null
+      energy: 0.00026
+    - name: gated_read
+      arguments: null
+      energy: 0.00026
+    - name: address_generation
+      arguments: null
+      energy: 0.01839
+    - name: metadata_read
+      arguments: null
+      energy: 0
+    - name: metadata_write
+      arguments: null
+      energy: 0
+    - name: gated_metadata_read
+      arguments: null
+      energy: 0
+    - name: gated_metadata_write
+      arguments: null
+      energy: 0
+    - name: decompression_count
+      arguments: null
+      energy: 0.0241
+    - name: compression_count
+      arguments: null
+      energy: 0.0241
+    - name: idle
+      arguments: null
+      energy: 0.00026
