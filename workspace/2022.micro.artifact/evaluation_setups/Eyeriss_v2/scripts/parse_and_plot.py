@@ -63,6 +63,7 @@ def main(stats_prefix):
     # find output files and parse based on the collected information
     energy_values = {}
     memory_values = {}
+    cycle_values = {}
     print("Eyeriss DRAM Compression Ratioes (read + write)")
     for job_name in job_names:
         job_info = stats_collector[job_name]
@@ -79,11 +80,15 @@ def main(stats_prefix):
         with open(output_path, 'w') as f:
             f.write(str(job_output_stats))
         energy = {}
+        cycle = {}
 
         for component, values in job_output_stats['energy_breakdown_pJ'].items():
             energy[component] = values['energy']
+        for component, values in job_output_stats['bandwidth_and_cycles'].items():
+            cycle[component] = values['cycles']
         
         energy_values[job_name] = energy
+        cycle_values[job_name] = cycle
         # print(job_output_stats)
         job_DRAM_weight_accesses =  job_output_stats["energy_breakdown_pJ"]["DRAM"]["actual_accesses_per_instance"][0]
         job_DRAM_iact_accesses =  job_output_stats["energy_breakdown_pJ"]["DRAM"]["actual_accesses_per_instance"][1]
@@ -105,6 +110,10 @@ def main(stats_prefix):
         total_energy_usage[job] = total_energy
         normalized_energy_data_per_job[job] = {key: value / total_energy for key, value in energy_data.items()}
         energy_data_per_job[job] = {key: value for key, value in energy_data.items()}
+        
+    cycle_data_per_job = {}
+    for job, cycle_data in cycle_values.items():
+        cycle_data_per_job[job] = {key: value for key, value in cycle_data.items()}
         
     # components = list(energy_values[job_names[0]].keys())
 #     print("energies")
@@ -195,14 +204,36 @@ def main(stats_prefix):
 
     # Add labels and title
     ax.set_xlabel('Job Name')
-    ax.set_ylabel('Total Energy Usage')
-    ax.set_title('Total Energy Usage per Job')
+    ax.set_ylabel('Total Energy')
+    ax.set_title('Total Energy per Job')
     ax.legend(title="Components", bbox_to_anchor=(1.05, 1), loc='upper left')
     
     output_fig_2_path = os.path.join(job_info["path"], "output", "total_energy_plot.png")
     plt.savefig(output_fig_2_path, bbox_inches='tight')
     plt.close()
     print("Saved:", output_fig_2_path)
+    
+    #plot cycles
+    jobs = list(cycle_values.keys())
+    cycle = list(cycle_values.values())
+    fig, ax = plt.subplots(figsize=(12, 6))  # You can adjust the figure size as needed
+    
+    
+    for j, job in enumerate(job_names):
+        # print(cycle_values)
+        # print(job)
+        ax.bar(job, cycle_values[job]['reg'], bottom=0, color=plt.cm.tab10(i), label=component if j == 0 else "")
+
+    # Add labels and title
+    ax.set_xlabel('Job Name')
+    ax.set_ylabel('Total Cycles')
+    ax.set_title('Total Cycles per Job')
+    # ax.legend(title="Components", bbox_to_anchor=(1.05, 1), loc='upper left')
+    
+    output_fig_4_path = os.path.join(job_info["path"], "output", "total_cycles_plot.png")
+    plt.savefig(output_fig_4_path, bbox_inches='tight')
+    plt.close()
+    print("Saved:", output_fig_4_path)
     
     #plot memory accesses
     jobs = list(memory_values.keys())
