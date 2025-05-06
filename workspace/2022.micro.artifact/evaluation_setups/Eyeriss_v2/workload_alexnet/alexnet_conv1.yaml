@@ -12,8 +12,10 @@ problem:
     Wdilation: 1
     Wstride: 4
     densities:
+      # Inputs: 0.999
+      # Weights: 0.710166
       Inputs: 0.1
-      Weights: 0.1
+      Weights: 1
       Outputs: 0.378
   shape:
     coefficients:

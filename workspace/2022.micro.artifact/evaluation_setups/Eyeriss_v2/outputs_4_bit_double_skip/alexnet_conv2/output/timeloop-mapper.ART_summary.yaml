@@ -1,0 +1,63 @@
+ART_summary:
+    version: '0.4'
+    table_summary:
+      - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].psum_spad
+        area: 164.9
+        primitive_estimations: CactiSRAM
+      - name: eyeriss_v2.DRAM
+        area: 1.0
+        primitive_estimations: dummy
+      - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].iact_spad
+        area: 101.001
+        primitive_estimations:
+          - name: storage
+            estimator: CactiSRAM
+          - name: metadata_storage
+            estimator: CactiSRAM
+      - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].weight_spad
+        area: 1008.62
+        primitive_estimations:
+          - name: storage
+            estimator: CactiSRAM
+          - name: metadata_storage
+            estimator: CactiSRAM
+      - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].reg
+        area: 4.1225
+        primitive_estimations:
+          - name: storage
+            estimator: CactiSRAM
+          - name: metadata_storage
+            estimator: CactiSRAM
+      - name: eyeriss_v2.glb_pe_cluster[0..15].PE[0..11].MAC
+        area: 2.0
+        primitive_estimations:
+          - name: multiplier
+            estimator: dummy
+          - name: adder
+            estimator: dummy
+      - name: eyeriss_v2.glb_pe_cluster[0..15].glb_iact
+        area: 330368.0
+        primitive_estimations:
+          - name: storage
+            estimator: CactiSRAM
+          - name: address_generators[0..1]
+            estimator: dummy
+          - name: metadata_counters[0..1]
+            estimator: dummy
+          - name: metadata_storage
+            estimator: Aladdin_table
+          - name: intersection_unit
+            estimator: Aladdin_table
+      - name: eyeriss_v2.glb_pe_cluster[0..15].glb_psum
+        area: 330368.0
+        primitive_estimations:
+          - name: storage
+            estimator: CactiSRAM
+          - name: address_generators[0..1]
+            estimator: dummy
+          - name: metadata_counters[0..1]
+            estimator: dummy
+          - name: metadata_storage
+            estimator: Aladdin_table
+          - name: intersection_unit
+            estimator: Aladdin_table

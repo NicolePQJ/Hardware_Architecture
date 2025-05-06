@@ -1,0 +1,29 @@
+DRAM [ Weights:663552 (663552) Inputs:172800 (35770) Outputs:259584 (78914) ] 
+-----------------------------------------------------------------------------
+| for Q in [0:13)
+|   for C in [0:3)
+|     for S in [0:3) (Spatial-X)
+|       for M in [0:2) (Spatial-X)
+
+glb_iact [ Inputs:3840 (3840) ] 
+-------------------------------
+|         for M in [0:48)
+|           for P in [0:13)
+|             for R in [0:3)
+
+glb_psum [ Outputs:16 (16) ] 
+----------------------------
+|               for C in [0:16)
+|                 for M in [0:2)
+|                   for N in [0:2)
+|                     for N in [0:2) (Spatial-X)
+|                       for M in [0:2) (Spatial-X)
+|                         for C in [0:2) (Spatial-X)
+
+iact_spad [ Inputs:2 (2) ] 
+weight_spad [ Weights:2 (2) ] 
+psum_spad [ Outputs:1 (1) ] 
+reg [ ] 
+-------
+|                           for C in [0:2)
+|                             << Compute >>

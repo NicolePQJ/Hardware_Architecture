@@ -1,5 +1,188 @@
 import os, inspect, sys, subprocess, yaml, pprint, math, pickle, shutil, signal, math, time, argparse
 from copy import deepcopy
+from jinja2 import Environment, FileSystemLoader
+
+# # static paths
+# this_file_path = os.path.abspath(inspect.getfile(inspect.currentframe()))
+# this_directory = os.path.dirname(this_file_path)
+# os.chdir(this_directory)
+
+# # paths to important input specs
+# arch_file_path = os.path.join(this_directory, "..", "architecture", "new_arch.yaml")
+# components_file_path = os.path.join(this_directory, "..", "architecture", "components.yaml")
+# sparse_iact_opt_file_path = os.path.join(this_directory, "..","sparse_opt", "sparse_iact_opt.yaml")
+# dense_iact_opt_file_path = os.path.join(this_directory, "..", "sparse_opt", "dense_iact_opt.yaml")
+# workload_dir_path = os.path.join(this_directory, "..", "workload_alexnet")
+# ert_path = os.path.join(this_directory, "..","ert_art", "ERT.yaml")
+# art_path = os.path.join(this_directory, "..","ert_art", "ART.yaml")
+# # ert_path = os.path.join(this_directory, "..","ert", "ERT.yaml")
+# # art_path = os.path.join(this_directory, "..","ert", "ART.yaml")
+# mappings_dir = os.path.join(this_directory, "..","mappings_found")
+# dataflow_file_path = os.path.join(this_directory, "..", "dataflow", "row_stationary.yaml")
+# mapper_file_path = os.path.join(this_directory, "..", "mapper", "mapper.yaml")
+
+# def render_arch_yaml_jinja(template_path, params, output_path):
+#     env = Environment(loader=FileSystemLoader(searchpath='./'))
+    
+#     template = env.get_template(template_path)
+    
+#     rendered_content = template.render(params)
+    
+#     with open(output_path, 'w') as f:
+#         f.write(rendered_content)
+
+# def run_timeloop(job_name, input_dict, ert_path, art_path, base_dir):
+    
+#     print("Running job: ", job_name)
+#     output_dir = os.path.join(base_dir, "output")
+    
+#     if not os.path.exists(output_dir) \
+#        and not os.path.exists(os.path.join(output_dir, "timeloop-mapper.map+stats.xml")) \
+#        and not os.path.exists(os.path.join(output_dir, "timeloop-model.map+stats.xml")):
+#        os.makedirs(output_dir)
+#     else:
+#         if not OVERWRITE:
+#             print("Found existing results: ", output_dir)
+#             return True
+#         else:
+#             print("Found and overwrite existing results: ", output_dir)
+    
+#     input_file_path = os.path.join(base_dir, "aggregated_input.yaml")
+#     # shutil.copy(ert_path, os.path.join(base_dir, "ERT.yaml"))
+#     # shutil.copy(art_path, os.path.join(base_dir, "ART.yaml"))
+    
+#     if not USE_MODEL: 
+#         input_dict.pop("mapping", 0)
+#         yaml.dump(input_dict, open(input_file_path, "w"), default_flow_style=False)
+#         os.chdir(output_dir)
+#         subprocess_cmd = ["timeloop-mapper", input_file_path]
+
+#         print("\tRunning test: ", job_name)
+
+#         p = subprocess.Popen(subprocess_cmd)
+#         try:
+#             p.communicate(timeout=240) # wait for at most 4 min
+# #             p.communicate(timeout=1200) # wait for at most 20 min
+#         except KeyboardInterrupt:
+#            p = 0
+#            while p <= 60 and not os.path.exists(os.path.join(output_dir, "timeloop-mapper.map+stats.xml")):
+#                time.sleep(1)
+#                p = p + 1        
+#         except subprocess.TimeoutExpired:
+#            print(job_name,  " reaches timeout limit")
+#            os.kill(p.pid, signal.SIGINT)
+        
+#         return True
+    
+#     else:
+#         model_input_dict = deepcopy(input_dict)
+#         model_input_dict.pop("architecture_constraints")
+#         model_input_dict.pop("mapspace_constraints")
+#         model_input_dict.pop("mapper")
+#         yaml.dump(model_input_dict, open(input_file_path, "w"), default_flow_style=False)
+        
+#         os.chdir(output_dir)
+#         subprocess_cmd = ["timeloop-model", input_file_path, os.path.join(base_dir, "map.yaml")]
+#         p = subprocess.Popen(subprocess_cmd)
+
+# def no_op_constructor(loader, tag_suffix, node):
+#     """
+#     A catch-all constructor that ignores the custom tag
+#     and just constructs the node as a normal Python dict
+#     (or list, etc.) using safe_load defaults.
+#     """
+#     return loader.construct_object(node, deep=True)
+
+# def main():
+#     yaml.SafeLoader.add_multi_constructor('', no_op_constructor)
+#     # arch_spec = yaml.load(open(arch_file_path), Loader = yaml.SafeLoader)
+#     component_spec = yaml.load(open(components_file_path), Loader = yaml.SafeLoader)
+#     constraints_spec = yaml.load(open(dataflow_file_path), Loader = yaml.SafeLoader)
+#     mapper_spec = yaml.load(open(mapper_file_path), Loader = yaml.SafeLoader)
+
+#     stats_collector = {}
+#     # print(os.listdir(workload_dir_path))
+#     # if SKIP_PAST in os.listdir(workload_dir_path):
+#     #     idx = os.listdir(workload_dir_path).index(SKIP_PAST)
+#     #     layers = os.listdir(workload_dir_path)[idx+1:]
+#     # else:
+#     #     layers = os.listdir(workload_dir_path)
+
+#     template_path = os.path.join(this_directory, "..", "architecture", "new_arch.yaml")
+    
+#     sweep_params = [
+#         {"PE_MEM": 1024, "PE_BW": 64},
+#         {"PE_MEM": 2048, "PE_BW": 64},
+#         {"PE_MEM": 1024, "PE_BW": 128}
+#     ]
+    
+#     for i, params in enumerate(sweep_params):
+#         temp_arch_path = os.path.join(this_directory, f"temp_arch_{i}.yaml")
+#         render_arch_yaml_jinja(template_path, params, temp_arch_path)
+#         arch_spec = yaml.load(open(temp_arch_path), Loader=yaml.SafeLoader)
+    
+                            
+        
+#         for layer in layers:
+#             aggregated_input = {}
+            
+#             full_path = os.path.join(workload_dir_path, layer)
+#             if os.path.isfile(full_path) and layer.endswith(('.yaml', '.yml')):
+#                 workload_spec = yaml.load(open(full_path), Loader=yaml.SafeLoader)
+#             else:
+#                 continue
+#             print(full_path)
+#             print(workload_spec["problem"]["instance"]["densities"]["Inputs"])
+#             # dense_iact = workload_spec["problem"]["instance"]["densities"]["Inputs"] > 0.9
+    
+#             # if not dense_iact:             
+#             #     sparse_opt_spec = yaml.load (open(sparse_iact_opt_file_path), Loader = yaml.SafeLoader)
+#             # else:
+#             #     sparse_opt_spec = yaml.load (open(dense_iact_opt_file_path), Loader = yaml.SafeLoader)
+#             sparse_opt_spec = yaml.load (open(sparse_iact_opt_file_path), Loader = yaml.SafeLoader)
+           
+#             mapping_file_path = os.path.join(mappings_dir, layer)
+#     #         mapping_spec = yaml.load(open(mapping_file_path), Loader = yaml.SafeLoader)
+            
+#             aggregated_input.update(arch_spec)
+#             aggregated_input.update(component_spec)
+#             aggregated_input.update(sparse_opt_spec)
+#             aggregated_input.update(workload_spec)
+#     #         aggregated_input.update(mapping_spec)
+#             aggregated_input.update(constraints_spec)
+#             aggregated_input.update(mapper_spec)
+    
+#             job_name = layer.split('.')[0]
+#             base_output_dir = os.path.join(OUT_DIR, job_name)
+    
+#             # run evaluation 
+#             run_timeloop(job_name, aggregated_input, ert_path, art_path, base_output_dir)
+    
+  
+# if __name__ == "__main__":
+
+#     parser = argparse.ArgumentParser("sweep alexnet conv layers to get DRAM compression ratio for Eyeriss. Usage: python3 run_alexnet_conv.py")
+#     parser.add_argument('-o', '--output_dir', type=str, default="outputs", help='path to top level output directory' )
+#     parser.add_argument('--max_layers', type=int, default=100, help='max number of layers to run')
+#     parser.add_argument('--no_overwrite', action="store_true", help='skip job there is already some previous results in the output folder')
+#     parser.add_argument('--search_mapping', action="store_true", help='search for optimal mapping instead of using the provided mappings, this option will make the experiment run much slower')
+#     parser.add_argument('--workload_path', type=str, default="workload_alexnet", help='use a workload other than the default alexNet')
+    
+#     parser.add_argument('--skip_past', type=str, default="", help='skip past certain layers')
+#     options = parser.parse_args()
+   
+#     OUT_DIR = os.path.join(this_directory, "..", options.output_dir)
+#     OVERWRITE = not options.no_overwrite 
+#     USE_MODEL = not options.search_mapping 
+#     SKIP_PAST = options.skip_past
+    
+#     workload_dir_path = os.path.join(this_directory, "..", options.workload_path)
+    
+#     main()
+
+
+
+
 
 # static paths
 this_file_path = os.path.abspath(inspect.getfile(inspect.currentframe()))
